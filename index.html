@@ -15,41 +15,16 @@
   <hr>
   <p>
     Welcome To CyberSecurity Analyst Marco Santibanez' Portfolio 
- 
-</script>
-  </p>
-!function() {
-    const e = document.querySelectorAll("[data-theme-toggle] [type='radio']")
-      , t = "user-color-scheme"
-      , o = localStorage.getItem("user-color-scheme") || "system"
-      , c = t=>{
-        e.forEach((e=>{
-            e.checked = t === e.value
-        }
-        ))
-    }
-    ;
-    c(o),
-    e.forEach((e=>{
-        e.addEventListener("change", (()=>{
-            if (!e.checked)
-                return;
-            const a = e.value;
-            if ((e=>{
-                const t = e || o;
-                t ? (c(t),
-                window.applyThemeSetting(t)) : c("system")
-            }
-            )(a),
-            "system" === a)
-                localStorage.removeItem(t);
-            else
-                localStorage.setItem(t, a)
-        }
-        ))
-    }
-    ))
-}();
-<script/>
+
 </body>
+  <div class="container">
+  <label class="toggle_label">
+    <input type="checkbox" id="mode" class="toggle">
+    <span class="slider round">
+      <i class="fa-solid fa-moon fa-lg fa-spin moon"></i>
+      <i class="fa-solid fa-sun fa-spin fa-lg sun"></i>
+    </span>
+  </label>
+  <p id="theme"></p>
+</div>
 </html>
