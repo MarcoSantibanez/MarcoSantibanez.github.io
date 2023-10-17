@@ -1,27 +1,2 @@
-theme: jekyll-theme-minimal
-title: Marco Santibanez' Portfolio
-description: Bookmark this to keep an eye on my project updates!
-
-
-# Custom Variables
-custom_repositories:
-
-  - name: Botium Toys
-    url: https://github.com/MarcoSantibanez/Botium-Toys
- 
-  - name: Another Project
-    url:
-    description: A second cool project.
-
-<ul>
-  {% for repo in site.custom_repositories %}
-    <li>
-      <h3><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
-      <p>{{ repo.description }}</p>
-    </li>
-  {% endfor %}
-</ul>
-
-
-
-</html>
+auto: true
+include: [".well-known"]
