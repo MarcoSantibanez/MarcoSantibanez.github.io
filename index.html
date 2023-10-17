@@ -15,7 +15,40 @@
   <hr>
   <p>
     Welcome To CyberSecurity Analyst Marco Santibanez' Portfolio 
+ 
   </p>
+!function() {
+    const e = document.querySelectorAll("[data-theme-toggle] [type='radio']")
+      , t = "user-color-scheme"
+      , o = localStorage.getItem("user-color-scheme") || "system"
+      , c = t=>{
+        e.forEach((e=>{
+            e.checked = t === e.value
+        }
+        ))
+    }
+    ;
+    c(o),
+    e.forEach((e=>{
+        e.addEventListener("change", (()=>{
+            if (!e.checked)
+                return;
+            const a = e.value;
+            if ((e=>{
+                const t = e || o;
+                t ? (c(t),
+                window.applyThemeSetting(t)) : c("system")
+            }
+            )(a),
+            "system" === a)
+                localStorage.removeItem(t);
+            else
+                localStorage.setItem(t, a)
+        }
+        ))
+    }
+    ))
+}();
 
 </body>
 </html>
