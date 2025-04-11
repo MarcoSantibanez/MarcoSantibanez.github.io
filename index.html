@@ -28,8 +28,8 @@
         .mode {
             float:right;
         }
-        .change {
-  cursor: url('data:text/plain;charset=utf-8,%F0%9F%94%92'), auto;
+        change {
+  cursor: pointer;
   border: 1px solid #555;
   border-radius: 40%;
   width: 20px;
@@ -38,12 +38,14 @@
   margin-left: 8px;
 }
 
+/* Default image cursor */
 img {
-  cursor: pointer;  /* Default pointer cursor for images */
+  cursor: url("🔒"), pointer;
 }
 
+/* On hover, change to unlocked cursor emoji */
 img:hover {
-  cursor: url('data:text/plain;charset=utf-8,%F0%9F%94%93'), auto;  /* Unlock emoji cursor */
+  cursor: url("🔓"), pointer;
 }
         .dark{
             background-color: #222;
