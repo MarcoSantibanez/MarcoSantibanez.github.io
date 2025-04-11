@@ -16,42 +16,47 @@
     <script src=
 "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
     </script>
-     
-    <style>
-        body{
-        padding:3% 3% 3% 3%;
-        text-align:center;
-        }
-        h1{
-        color: #32a852;
-        }
-        .mode {
-            float:right;
-        }
-        change {
-  cursor: pointer;
-  border: 1px solid #555;
-  border-radius: 40%;
-  width: 20px;
-  text-align: center;
-  padding: 5px;
-  margin-left: 8px;
-}
+  
+<style>
+  body {
+    padding: 3%;
+    text-align: center;
+  }
 
-/* Default image cursor */
-img {
-  cursor: url("🔒"), pointer;
-}
+  h1 {
+    color: #32a852;
+  }
 
-/* On hover, change to unlocked cursor emoji */
-img:hover {
-  cursor: url("🔓"), pointer;
-}
-        .dark{
-            background-color: #222;
-            color: #e6e6e6;
-        }
-    </style>
+  .mode {
+    float: right;
+  }
+
+  .change {
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 40%;
+    width: 20px;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
+  }
+
+  .dark {
+    background-color: #222;
+    color: #e6e6e6;
+  }
+
+ 
+  a img {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔒</text></svg>") 16 16, auto;
+  }
+
+  a img:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
+  }
+</style>
+
+  
 </head>
 <body>
     <div class="mode">
