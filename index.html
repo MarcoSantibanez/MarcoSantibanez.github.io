@@ -51,22 +51,24 @@
   transition: opacity 1.5s ease-in-out;
 }
 
-.mySlides.fade {
-  opacity: 1;
+.mySlides {
+  display: none;  /* Hide all slides by default */
 }
-    }
-    .mySlides img {
-      max-width: 100%;
-      height: auto;
-    }
-    .fade {
-      animation-name: fade;
-      animation-duration: 1s;
-    }
-    @keyframes fade {
-      from { opacity: .4 }
-      to { opacity: 1 }
-    }
+
+.mySlides img {
+  max-width: 100%;
+  height: auto;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 7s;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
   </style>
 </head>
 <body>
@@ -207,26 +209,27 @@ click the corresponding image to access it on GitHub or LinkedIn.</strong>
 
   <script>
     let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-   let slideIndex = 0;
 showSlides();
 
 function showSlides() {
-  let i;
   let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  // Hide all slides
-    slides[i].classList.remove("fade");  // Remove the fade class
+  
+  // Hide all slides
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
+  
+  // Increment slide index, loop back if necessary
   slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }  // Reset the slide index when the last image is reached
+  if (slideIndex > slides.length) { slideIndex = 1; }
 
-  slides[slideIndex - 1].style.display = "block";  // Show the current slide
-  slides[slideIndex - 1].classList.add("fade");  // Add fade effect
-  setTimeout(showSlides, 7000);  // Change slide every 7 seconds
+  // Show the current slide
+  slides[slideIndex - 1].style.display = "block";
+  
+  // Call the showSlides function again after 7 seconds
+  setTimeout(showSlides, 7000); 
 }
+
       </script>
   <hr>
   <p>This page supports light and dark mode</p>
