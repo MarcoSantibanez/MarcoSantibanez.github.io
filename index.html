@@ -46,7 +46,14 @@
       margin: auto;
     }
     .mySlides {
-      display: none;
+  display: none;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.mySlides.fade {
+  opacity: 1;
+}
     }
     .mySlides img {
       max-width: 100%;
@@ -209,20 +216,16 @@ showSlides();
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
-  
-  // Loop through each slide and set them to invisible (opacity: 0)
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.opacity = "0"; // Hide the image by fading out
-    slides[i].style.visibility = "hidden"; // Prevent interaction
+    slides[i].style.display = "none";  // Hide all slides
+    slides[i].classList.remove("fade");  // Remove the fade class
   }
-
   slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }
+  if (slideIndex > slides.length) { slideIndex = 1 }  // Reset the slide index when the last image is reached
 
-  // Show the current image by changing opacity and visibility
-  slides[slideIndex - 1].style.visibility = "visible"; 
-  slides[slideIndex - 1].style.opacity = "1"; // Fade in
-  setTimeout(showSlides, 7000); // Change slide every 7 seconds
+  slides[slideIndex - 1].style.display = "block";  // Show the current slide
+  slides[slideIndex - 1].classList.add("fade");  // Add fade effect
+  setTimeout(showSlides, 7000);  // Change slide every 7 seconds
 }
       </script>
   <hr>
