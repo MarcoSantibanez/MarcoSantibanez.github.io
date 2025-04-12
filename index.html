@@ -11,9 +11,11 @@
       padding: 3%;
       text-align: center;
        background-color: #8A9A5B;
+      color: #e6e6e6;
     }
-    h1 {
-      color: #7dcea0;
+    h1, h2, h3, h4 {
+  color: white; /* Ensure all header tags have white text */
+}
     }
     .mode {
       float: right;
@@ -201,17 +203,27 @@ click the corresponding image to access it on GitHub or LinkedIn.</strong>
     showSlides();
 
     function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 7000);
-    }
-  </script>
+   let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  
+  // Loop through each slide and set them to invisible (opacity: 0)
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.opacity = "0"; // Hide the image by fading out
+    slides[i].style.visibility = "hidden"; // Prevent interaction
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+
+  // Show the current image by changing opacity and visibility
+  slides[slideIndex - 1].style.visibility = "visible"; 
+  slides[slideIndex - 1].style.opacity = "1"; // Fade in
+  setTimeout(showSlides, 7000); // Change slide every 7 seconds
+}
 
   <hr>
   <p>This page supports light and dark mode</p>
