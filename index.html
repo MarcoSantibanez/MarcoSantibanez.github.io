@@ -3,58 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" content="Chrome=1">
-
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Marco Santibanez</title>
-  
-  <p align="center">
-<div align="center" style="font-size:xx-large">🔐🌐🛡️</div> 
-</p>
-  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <br>
-    <script src=
-"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-    </script>
-  
   <style>
-  img {
-    width: 200px; /* Set your desired width */
-    height: 300px; /* Set your desired height */
-    object-fit: fill; /* Fill Or 'contain', 'fill' based on needs */
-  }
-</style>
-  
-<style>
-  body {
-    padding: 3%;
-    text-align: center;
-  }
-
-  h1 {
-    color: #32a852;
-  }
-
-  .mode {
-    float: right;
-  }
-
-  .change {
-    cursor: pointer;
-    border: 1px solid #555;
-    border-radius: 40%;
-    width: 20px;
-    text-align: center;
-    padding: 5px;
-    margin-left: 8px;
-  }
-
-  .dark {
-    background-color: #222;
-    color: #e6e6e6;
-  }
-
- 
+    body {
+      padding: 3%;
+      text-align: center;
+    }
+    h1 {
+      color: #32a852;
+    }
+    .mode {
+      float: right;
+    }
+    .change {
+      cursor: pointer;
+      border: 1px solid #555;
+      border-radius: 40%;
+      width: 20px;
+      text-align: center;
+      padding: 5px;
+      margin-left: 8px;
+    }
+    .dark {
+      background-color: #222;
+      color: #e6e6e6;
+    }
  .lock-cursor {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔒</text></svg>") 16 16, auto;
   }
@@ -62,108 +37,97 @@
   a img:hover {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
   }
-}
-    .project-img {
-      width: 75%;
-      height: 150px;
-      object-fit: cover;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+    .slideshow-container {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
     }
-    .project-card {
-      margin-bottom: 30px;
+    .mySlides {
+      display: none;
     }
-</style>
+    .mySlides img {
+      max-width: 100%;
+      height: auto;
+    }
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    @keyframes fade {
+      from { opacity: .4 }
+      to { opacity: 1 }
+    }
+  </style>
+</head>
+<body>
+  <div class="mode">
+    Dark mode: <span class="change">OFF</span>
+  </div>
 
-  
-</head>
-<body>
-    <div class="mode">
-        Dark mode:             
-        <span class="change">OFF</span>
-    </div>
-     <script>
-        $( ".change" ).on("click", function() {
-            if( $( "body" ).hasClass( "dark" )) {
-                $( "body" ).removeClass( "dark" );
-                $( ".change" ).text( "OFF" );
-            } else {
-                $( "body" ).addClass( "dark" );
-                $( ".change" ).text( "ON" );
-            }
-        });
-    </script>
-</head>
-  
-<body>
-  <br>
-  
   <hr>
-  
-  <p>
-    
-    <h2 align="center">Welcome To CyberSecurity Analyst Marco Santibanez' Portfolio</h2>
-  
-    <br> 
-    <br>
-    <br>
-    <h3 align="center">
-- 👋 Hi, I’m Marco Santibanez
-<br>
-- 👀 I’m interested in entry-level Cybersecurity opportunities
-<br>
-- 🤝 I’m looking to collaborate on your Cybersecurity Team as an entry level Cybersecurity analyst
-<br>
-- 📫 Reach me via linkedin @<a target="_blank" href="https://www.linkedin.com/in/marcosantibanez3/" title="LinkedIn">Marco Santibanez</a> </h3>
-  <br> 
-  <br> 
-  <br>
-<p align="center">
-  <strong>For a comprehensive view of each project, including technical documentation and context, please click the corresponding image to access it on GitHub or LinkedIn.</strong>
+  <h2>Welcome To CyberSecurity Analyst MArco Santibaanez' Portfolio</h2>
+  <h3>
+    👋 Hi, I’m Marco Santibanez <br>
+    👀 Interested in entry-level Cybersecurity opportunities <br>
+    🤝 Looking to join a Cybersecurity Team or SOC <br>
+    📫 Reach me via LinkedIn: <a target="_blank" href="https://www.linkedin.com/in//marcosantibanez3/">Maco Santibanez</a> <br>
+   <p align="center">
+  <strong>For a comprehensive view of each project, including technical documentation and context, please
+click the corresponding image to access it on GitHub or LinkedIn.</strong>
 </p>
-  <br>  
-  <br> 
-  <br> 
-<div class="container">
-    <div class="row">
 
-   
-      <div class="col-md-4 project-card">
-        <h4>Scope, Goals, and Risk Assessment</h4>
-        <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toy">
-          <img class="project-img" src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" style="margin-right: 10px;>
-        </a>
-      </div>
-  <br>    
-  <br> 
-  <br>
-   
-
-      <div class="col-md-4 project-card">
-        <h4>Analyzing a Network Attack</h4>
-        <a href="https://github.com/MarcoSantibanez/Analyzing-a-network-attack">
-          <img class="project-img" src="https://user-images.githubusercontent.com/138132151/251838398-f5753aa3-84d9-49f9-96a9-ef63a51622f9.png"style="margin-right: 10px;>
-        </a>
-      </div>
-
-  <br> 
-  <br>
-  <br>   
-      <div class="col-md-4 project-card">
-        <h4>Network Hardening Analysis</h4>
-        <a href="https://github.com/MarcoSantibanez/Network-Hardening-">
-          <img class="project-img" src="https://user-images.githubusercontent.com/138132151/251244783-d76773e5-7ab5-4292-a488-a231a478af70.png"style="margin-right: 10px;>
-        </a>
-      </div>
-  <br>
-  <br>
-  <br>
-     <hr/>
-  
-      
-</body>
-            <div align="center">
-        <h8 align="center"> This page supports light and dark mode</h8>
- 
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Scope, Goals, and Risk Assessment">
+      </a>
     </div>
+    <div class="mySlides fade">
+      <a href="https://github.com/null/Analyzing-a-network-attack" target="_blank">
+        <img src="https://user-images.githubusercontent.com/https://user-images.githubusercontent.com
+/138132151/251838398-f5753aa3-84d9-49f9-96a9-ef63a51622f9.png" alt="Analyzing-a-network-attack">
+      </a>
+    </div>
+    <div class="mySlides fade">
+      <a href="https://github.com/MarcoSantibanez/Network-Hardening-" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251244783-d76773e5-7ab5-4292-a488-a231a478af70.png.png" alt="Network-Hardening3">
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".change").on("click", function () {
+        if ($("body").hasClass("dark")) {
+          $("body").removeClass("dark");
+          $(".change").text("OFF");
+        } else {
+          $("body").addClass("dark");
+          $(".change").text("ON");
+        }
+      });
+    });
+  </script>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000);
+    }
+  </script>
+
+  <hr>
+  <p>This page supports light and dark mode</p>
+</body>
 </html>
