@@ -11,7 +11,6 @@
       padding: 3%;
       text-align: center;
       background-color: #1a4820;
-       background-image: url('https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/shieldLogo003green.png'); 
         background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
@@ -19,6 +18,20 @@
       filter: brightness(80%)
       color: #0d3606;
     }
+
+    .secureShield-logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.25;
+  z-index: -1;
+  pointer-events: none;
+  width: 30vw; /* scales with screen */
+  max-width: 500px;
+  height: auto;
+}
+
     h1, {
   color: #FFFFFF; /* Ensure all header tags have white text */
 }
@@ -75,10 +88,23 @@ color:  #FFCC33;  }
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
+
+  @media (prefers-reduced-motion: no-preference) {
+  .watermark-logo {
+    animation: pulse 15s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+  }
 }
   </style>
 </head>
 <body>
+<img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/shieldLogo003green.png" class="secureShield-logo" alt=" Secure Shield Logo">
+
+  
   <div class="mode">
     Dark mode: <span class="change">OFF</span>
   </div>
