@@ -145,16 +145,6 @@
 .carousel::-webkit-scrollbar-thumb:hover {
   background-color: #00ff88; /* bright neon green */
 }
-
-	  <div class="carousel-nav">
-  <button class="carousel-btn left">
-    <span class="arrow">&lt;</span> Previous project
-  </button>
-  <button class="carousel-btn right">
-    Next project <span class="arrow">&gt;</span>
-  </button>
-</div>
-
     .project-card {
       flex: 0 0 300px;
       scroll-snap-align: center;
@@ -254,50 +244,6 @@
       color: #888;
       border-top: 1px solid #1f1f1f;
     }
-
-	  .carousel-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  background-color: var(--dark-panel);
-  border-top: 2px solid var(--line-accent);
-  border-bottom: 2px solid var(--line-accent);
-}
-
-.carousel-btn {
-  background: none;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  color: var(--text-light);
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.carousel-btn .arrow {
-  font-size: 1.5rem;
-  color: var(--green-neon);
-  text-shadow: 0 0 8px var(--green-glow);
-  transition: transform 0.3s ease;
-}
-
-.carousel-btn:hover {
-  color: var(--green-neon);
-  text-shadow: 0 0 10px var(--green-glow);
-  border-color: var(--green-neon);
-  box-shadow: 0 0 10px var(--green-glow);
-}
-
-.carousel-btn:hover .arrow {
-  transform: scale(1.1);
-}
-
   </style>
 </head>
 <body>
@@ -423,7 +369,7 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
     </div>
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Retrieved-Specific-Pieces-of-Information-From-the-Database-That-Can-Filter-for-Multiple-Conditions" target="_blank">
-        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Simple%20SQL%20Search.png'.png">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Simple%20SQL%20Search.png">
         Simple SQL Search
       </a>
     </div>
@@ -481,9 +427,6 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
         Linux Software Installation  
 	  </a>
     </div>
-
-/* break */
-
 
 
 
