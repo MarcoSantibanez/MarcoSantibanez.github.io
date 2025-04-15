@@ -156,7 +156,13 @@
     .carousel:hover .carousel__slider {
       animation-play-state: paused; /* Pause the scrolling when hovered */
     }
-	  
+@keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }	  
     .project-card {
       flex: 0 0 300px;
       scroll-snap-align: center;
@@ -193,13 +199,7 @@
       background: rgba(0, 255, 136, 0.08);
     }
 	
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+    
     }
     .contact-section label {
   display: flex;
@@ -529,34 +529,42 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
   const carousel = document.querySelector(".carousel");
   const slider = document.getElementById("carouselSlider");
 
-  // Clone all project cards
-  const cards = slider.children;
-  const cloneCount = cards.length;
-  for (let i = 0; i < cloneCount; i++) {
-    const clone = cards[i].cloneNode(true);
-    slider.appendChild(clone);
-  }
 
-  // Function to reset scroll position seamlessly
+Put this at the end of the HTML body.
+
+html
+Copy
+Edit
+<script>
+  const carousel = document.querySelector(".carousel");
+  const slider = document.getElementById("carouselSlider");
+
+  // Clone all project cards for seamless looping
+  const cards = Array.from(slider.children);
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    slider.appendChild(clone);
+  });
+
   let isResetting = false;
+
+  // When the user scrolls, manage looping manually
   carousel.addEventListener("scroll", () => {
     if (isResetting) return;
 
     const scrollLeft = carousel.scrollLeft;
-    const scrollWidth = slider.scrollWidth;
-    const visibleWidth = carousel.offsetWidth;
+    const totalScrollWidth = slider.scrollWidth;
+    const halfWidth = totalScrollWidth / 2;
 
-    // When reaching the end of the original set
-    if (scrollLeft >= scrollWidth / 2) {
+    if (scrollLeft >= halfWidth) {
       isResetting = true;
-      carousel.scrollLeft = scrollLeft - scrollWidth / 2;
+      carousel.scrollLeft = scrollLeft - halfWidth;
       isResetting = false;
     }
 
-    // Optional: scroll back to end if they scroll too far left
     if (scrollLeft <= 0) {
       isResetting = true;
-      carousel.scrollLeft = scrollLeft + scrollWidth / 2;
+      carousel.scrollLeft = scrollLeft + halfWidth;
       isResetting = false;
     }
   });
