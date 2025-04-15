@@ -120,6 +120,8 @@
   padding: 3rem 2rem;
   scroll-behavior: smooth;
   background: #0b0f17; /* dark-bg */
+  position: relative;
+  width: 100%;
 
   /* Firefox support */
   scrollbar-color: #00ff88 #12161f; /* green-neon thumb on dark-panel track */
@@ -145,6 +147,16 @@
 .carousel::-webkit-scrollbar-thumb:hover {
   background-color: #00ff88; /* bright neon green */
 }
+	   .carousel__slider {
+      display: flex;
+      gap: 2rem;
+      animation: marquee linear 10s infinite; /* Add marquee animation */
+    }
+
+    .carousel:hover .carousel__slider {
+      animation-play-state: paused; /* Pause the scrolling when hovered */
+    }
+	  
     .project-card {
       flex: 0 0 300px;
       scroll-snap-align: center;
@@ -179,6 +191,15 @@
 
     .project-card a:hover {
       background: rgba(0, 255, 136, 0.08);
+    }
+	
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
     }
     .contact-section label {
   display: flex;
@@ -265,6 +286,7 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
   </section>
 
   <section class="carousel">
+    <div class="carousel__slider">
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
         <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Botium Toys">
@@ -427,7 +449,171 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
         Linux Software Installation  
 	  </a>
     </div>
-
+<div class="carousel__slider">
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Botium Toys">
+        Botium Toys
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Analyzing-a-network-attack" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251838398-f5753aa3-84d9-49f9-96a9-ef63a51622f9.png" alt="Network Attack">
+        Network Attack Analysis
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Network-Hardening-" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251244783-d76773e5-7ab5-4292-a488-a231a478af70.png" alt="Network Hardening">
+        Network Hardening
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Number-of-clicked-phising-emails-by-department" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251836753-ad385766-cfa9-44c3-92d5-e9a2cc6cff12.png" alt="Phishing Email Stats">
+        Phishing Email Stats
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/IoC" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251560191-40c3496f-5796-4f4b-a9ee-6968937dcb99.png" alt="Indicators of Compromise">
+        Indicators of Compromise
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Splunk-Query" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251566530-4c9e4f96-a853-4165-bc87-9da481394200.png" alt="Splunk Query">
+        Splunk Query Examples
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Basic-Search-Using-Google-Chronicle-" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251570086-1488546c-6b27-4275-942f-30c4f20a05da.png" alt="Google Chronicle">
+        Chronicle Search
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Creating-Hash-Values" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251518584-d32551b9-b79f-4e63-9552-92f149fda4e0.png" alt="Hash Creation">
+        Creating Hashes
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Update-a-File-Through-a-Python-Algorithm" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251752926-3b9d1252-8412-445b-98f3-854774340e27.png" alt="Python File Update">
+        Python File Update
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Used-a-Playbook-to-Respond-to-a-Phishing-Incident" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251564245-018d591c-0ae5-481a-87cf-f60c6c0fa908.png" alt="Phishing Playbook">
+        Phishing Response Playbook
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Incident-Handiling-Journal" target="_blank">
+        <img src="https://user-images.githubusercontent.com/138132151/251552175-486cf680-fbcd-4a51-99bf-f41940882796.png" alt="Incident Journal">
+        Incident Handling Journal
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://www.linkedin.com/posts/marcosantibanez3_cybersecurity-onlinesafety-cybersecuremindset-activity-7191230415620202496-gvw_?utm_source=share&utm_medium=member_desktop&rcm=ACoAABxL4JIBTnJ_7rVkxKdLy-0UaL05t-ORUdA" target="_blank">
+        <img src="https://media.licdn.com/dms/image/v2/D5622AQHWoDWizQVQOA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714522935205?e=1747267200&v=beta&t=yerNZkoLJvEXZyKJfatrGIVB_Sc6k6w1pOJiU48xaR8" alt="Drive-By Download">
+        Drive-By Download Threat
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Using-the-NIST-Cybersecurity-Framework-to-respond-to-a-security-incident" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Nist.png" alt="NIST Framework Response">
+        NIST Framework Response
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Simple-Debugging-in-Python-" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Python%20Debugging.png">
+        Python Debugging
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/PASTA-threat-model-framework?tab=readme-ov-file" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/PASTA%20THREAt.png">
+        PASTA Threat Modeling
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Improved-authentication-authorization-and-accounting-for-a-small-business?tab=readme-ov-file" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Improved-authentication-authorization-and-accounting-for-a-small-business.png">
+        Improved AAA for Small Business
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Message-Decryption" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Message%20Decryption'.png">
+        Simple Message Decryption
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Retrieved-Specific-Pieces-of-Information-From-the-Database-That-Can-Filter-for-Multiple-Conditions" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Simple%20SQL%20Search.png">
+        Simple SQL Search
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Investigating-Security-Incident-Using-SQL-queries" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Invesitgating%20a%20security%20Incident%20Using%20SQL%20Queries.png">
+        Invesitgating a Security Incident Using SQL queries
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Filter-a-SQL-Query" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Filtering%20A%20SQL%20Query.png">
+        Filtering A SQL Query
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Retrieve-Employee-Device-Data-Using-SQL" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Retrieve-Employee-Information.png">
+        SQL Retrieval of Employee Information
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Adding-and-Deleting-Users-Using-Linux?tab=readme-ov-file" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Linux-cmd.png">
+        Security & Access Control With Linux
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Managing-Permissions-Using-Linux?tab=readme-ov-file" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/ViewingPermission.png">
+        Security & Access Control for Group Users
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Manage-files-with-Linux-commands" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/LinuxFileManagement.png">
+        File Managment in Linux
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Find-files-with-Linux-commands" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/FindingFiles.png">
+        Finding Files using Linux
+      </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/yummyrecipesforme?tab=readme-ov-file" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/DNS%20and%20ICMP%20Traffic.png">
+        Network Traffic Analysis  
+	  </a>
+    </div>
+<div class="project-card">
+      <a href="https://github.com/MarcoSantibanez/Install-software-in-a-Linux-distribution" target="_blank">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SuricataInstall.png">
+        Linux Software Installation  
+	  </a>
+    </div>
+</div>
+	    
 
 
 
