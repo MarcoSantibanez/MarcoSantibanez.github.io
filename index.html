@@ -3,281 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Marco Santibanez</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <title>Marco Santibanez' Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green-neon: #00ff88;
+      --green-glow: #00ff88cc;
+      --dark-bg: #0b0f17;
+      --dark-panel: #12161f;
+      --line-accent: #00ffaa;
+      --text-light: #e3e3e3;
+      --border-glow: rgba(0, 255, 136, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      padding: 3%;
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    header {
       text-align: center;
-      background-color: #2D531A;
-        background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      filter: brightness(125%)
-      color: #0d3606;
+      padding: 4rem 2rem 2rem;
+      background: linear-gradient(145deg, #0f161e, #0c131a);
+      border-bottom: 2px solid var(--green-neon);
     }
 
-    .secureShield-logo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: .8;
-  z-index: -1;
-  pointer-events: none;
-  width: 125vw; /* scales with screen */
-  max-width: 1500px;
-  height: auto;
-}
-
-    h1, {
-  color: #FFFFFF; /* Ensure all header tags have white text */
-}
-    h5,{
-color:  #FFCC33;  }
-    .mode {
-      float: right;
+    header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 3px solid var(--green-neon);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px var(--green-glow);
     }
-    .change {
-      cursor: pointer;
-      border: 1px solid #555;
-      border-radius: 40%;
-      width: 20px;
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--green-neon);
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.8;
+    }
+
+    .qualifications {
+      background-color: var(--dark-panel);
+      padding: 2rem;
+      border-top: 2px solid var(--line-accent);
+      border-bottom: 2px solid var(--line-accent);
       text-align: center;
-      padding: 5px;
-      margin-left: 8px;
     }
-    .dark {
-      background-color: #222;
-      color: #FFFFFF;
-    }
- .lock-cursor {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔒</text></svg>") 16 16, auto;
-  }
 
-  a img:hover {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
-  }
-    .slideshow-container {
-      position: relative;
-      max-width: 1000px;
+    .qualifications h2 {
+      font-size: 1.75rem;
+      color: var(--green-neon);
+      margin-bottom: 1rem;
+    }
+
+    .qualifications p {
+      font-size: 1rem;
+      max-width: 800px;
+      margin: 0.5rem auto;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 2rem;
+      scroll-snap-type: x mandatory;
+      padding: 3rem 2rem;
+      scroll-behavior: smooth;
+      background: #0f131a;
+    }
+
+    .project-card {
+      flex: 0 0 300px;
+      scroll-snap-align: center;
+      background-color: #10141c;
+      border: 1px solid var(--line-accent);
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--border-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--green-glow);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-card a {
+      display: block;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--green-neon);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .project-card a:hover {
+      background: rgba(0, 255, 136, 0.08);
+    }
+
+    .contact-section {
+      background: #12151d;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--line-accent);
+    }
+
+    .contact-section h2 {
+      color: var(--green-neon);
+      margin-bottom: 1rem;
+    }
+
+    .contact-section form {
+      max-width: 600px;
       margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .mySlides {
-  display: none;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
 
-.mySlides {
-  display: none;  /* Hide all slides by default */
-}
+    .contact-section input,
+    .contact-section textarea {
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #1a1e29;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+    }
 
-.mySlides img {
-  max-width: 100%;
-  height: auto;
-}
+    .contact-section button {
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--green-neon);
+      color: #0b0f17;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.fade {
-  animation-name: fade;
-  animation-duration: 7s;
-}
+    .contact-section button:hover {
+      background: #0b0f17;
+      color: var(--green-neon);
+      border: 1px solid var(--green-neon);
+    }
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-
-  @media (prefers-reduced-motion: no-preference) {
-  .watermark-logo {
-    animation: pulse 15s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.05); }
-  }
-}
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0b0f17;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #1f1f1f;
+    }
   </style>
 </head>
 <body>
-<img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/shieldLogo003green.png" class="secureShield-logo" alt=" Secure Shield Logo">
+  <header>
+    <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" alt="Marco Santibanez">
+    <h1>Marco Santibanez</h1>
+    <p>Certified Cybersecurity Analyst passionate about helping organizations stay secure, resilient, and ahead of evolving digital threats.</p>
+  </header>
 
-  
-  <div class="mode">
-    Dark mode: <span class="change">OFF</span>
-  </div>
+  <section class="qualifications">
+    <h2>Cybersecurity Credentials & Goals</h2>
+    <p>🔐 CompTIA Security+ Certified <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SecurityPlus%20Logo%20Certified%20CE%20see-through.png" alt="Sec+ Logo"></p>
+    <p>🔍 Google Cybersecurity Certificate<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" style="height: 1.5em;"></p>
+    <p>🧠 Continuously learning and developing advanced SOC and threat detection capabilities</p>
+    <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
+    <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p>
+    <p>For a comprehensive view of each project, including technical documentation and context, please
+click the corresponding image to access it on GitHub or LinkedIn</p>
+  </section>
 
-  <hr>
-  <hr>
-<h2>Welcome To CyberSecurity Analyst Marco Santibanez’ Portfolio</h2>
-
-<img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" align="right" alt="Profile Picture" />
-
-<div style="color: #FFCC33; text-align: left;">
-  <h5>
-    👋 Hi, I’m Certified in CompTia Sec+ 
-    <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SecurityPlus%20Logo%20Certified%20CE%20see-through.png">
-    | Google Cyber Security 
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEVHcEz////////9/f39/f79/f33+Pj////b3d74+fny8/P19vYAAAD////w8fH////////9/f3///8+fu7ZRCpBmEtNnVXaTDbbUz79/Pz0uCtIm1EqdO2FqPJplvDqpJ282MDifG87l0DW4fvXOBWqzrDvurbt8v55oPLkjIH00Mx0sHuRvpVpq3BrrHL2wEn51Y/4zHbw6eP4uBf86MP0sw6EpvJEhdRSie50prrFrCrsrqfqkSrssavxrDPP48yyx/Yvv4yqAAAAEnRSTlMAWZFT48ytmAumbmsCSV/Uv52LM4rJAAABN0lEQVQokY2SiXKCMBCGEUHBW5qQhGgRKopn7zq9ff+n6mZLNIAz7T/OZDdf8rO7xrL+p749Gg5Hdv8CsoOT7ApqBCU1TNYOKmrX2DpereJ1hf56LhhhjBHCFqazh0lCOOeMwW8e44Z3Nk0Y52TO+ZyQxDRGT7hH3kUQiDjRRSnWVMEH4+ShUnGzcH16/CKfl9pxYb2LomehNvLp9AWULyF2ATqw3kfRLZ6eXKEmNxA7f0Fti/BaCaC2HWNBUTjThRwBqnWsW3mTIS1aWYJtrlvBIWQ0DCne/T4Un8QhWL6K9hIo3e1pKg+TqdrxjcHv4G4o4YhMX43BW11MspRKKSlNM0y7+g9tYSpm281mO8NJBa3zU2hV52owy+oIE4lO+fl5/gkL36s93N7Adx3H9Qe9GioOlNMflcoty3IDwqwAAAAASUVORK5CYII=" alt="Google Logo">
-  </h5>
-
-  <h5>
-    👀 Interested in entry-level Cybersecurity opportunities <br><br>
-    🤝 Looking forward to joining your Cybersecurity Team or SOC <br><br>
-    📫 Reach me via LinkedIn:
-    <a target="_blank" href="https://www.linkedin.com/in/marcosantibanez3/" style="color: #FFCC33;">Marco Santibanez</a>
-  </h5>
-</div>
-   <br>
-    <br>
-    <br>
-    <hr>
-    <p align="center">
-     
-     
-  <strong>For a comprehensive view of each project, including technical documentation and context, please
-click the corresponding image to access it on GitHub or LinkedIn.</strong>
-</p>
-
-  <div class="slideshow-container">
-    
-    <div class="mySlides fade">
+  <section class="carousel">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Scope, Goals, and Risk Assessment">
+        <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Botium Toys">
+        Botium Toys
       </a>
     </div>
-    <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/null/Analyzing-a-network-attack" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251838398-f5753aa3-84d9-49f9-96a9-ef63a51622f9.png" alt="Analyzing-a-network-attack">
+        <img src="https://user-images.githubusercontent.com/138132151/251838398-f5753aa3-84d9-49f9-96a9-ef63a51622f9.png" alt="Network Attack">
+        Network Attack Analysis
       </a>
     </div>
-    <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Network-Hardening-" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251244783-d76773e5-7ab5-4292-a488-a231a478af70.png" alt="Network-Hardening">
+        <img src="https://user-images.githubusercontent.com/138132151/251244783-d76773e5-7ab5-4292-a488-a231a478af70.png" alt="Network Hardening">
+        Network Hardening
       </a>
     </div>
-
- <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Number-of-clicked-phising-emails-by-department" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251836753-ad385766-cfa9-44c3-92d5-e9a2cc6cff12.png" alt="Number-of-clicked-phising-emails-by-department">
+        <img src="https://user-images.githubusercontent.com/138132151/251836753-ad385766-cfa9-44c3-92d5-e9a2cc6cff12.png" alt="Phishing Email Stats">
+        Phishing Email Stats
       </a>
     </div>
-<div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/IoC" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251560191-40c3496f-5796-4f4b-a9ee-6968937dcb99.png" alt="IoCs">
+        <img src="https://user-images.githubusercontent.com/138132151/251560191-40c3496f-5796-4f4b-a9ee-6968937dcb99.png" alt="Indicators of Compromise">
+        Indicators of Compromise
       </a>
     </div>
-    <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Splunk-Query" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251566530-4c9e4f96-a853-4165-bc87-9da481394200.png" alt="Splunk-Query">
+        <img src="https://user-images.githubusercontent.com/138132151/251566530-4c9e4f96-a853-4165-bc87-9da481394200.png" alt="Splunk Query">
+        Splunk Query Examples
       </a>
     </div>
- <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Basic-Search-Using-Google-Chronicle-" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251570086-1488546c-6b27-4275-942f-30c4f20a05da.png" alt="Basic-Search-Using-Google-Chronicle-">
+        <img src="https://user-images.githubusercontent.com/138132151/251570086-1488546c-6b27-4275-942f-30c4f20a05da.png" alt="Google Chronicle">
+        Chronicle Search
       </a>
     </div>
-  
-  <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Creating-Hash-Values" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251518584-d32551b9-b79f-4e63-9552-92f149fda4e0.png" alt="Creating-Hash-Values">
+        <img src="https://user-images.githubusercontent.com/138132151/251518584-d32551b9-b79f-4e63-9552-92f149fda4e0.png" alt="Hash Creation">
+        Creating Hashes
       </a>
     </div>
-<div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Update-a-File-Through-a-Python-Algorithm" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251752926-3b9d1252-8412-445b-98f3-854774340e27.png" alt="Update-a-File-Through-a-Python-Algorithm">
+        <img src="https://user-images.githubusercontent.com/138132151/251752926-3b9d1252-8412-445b-98f3-854774340e27.png" alt="Python File Update">
+        Python File Update
       </a>
     </div>
- <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Used-a-Playbook-to-Respond-to-a-Phishing-Incident" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251564245-018d591c-0ae5-481a-87cf-f60c6c0fa908.png" alt="Used-a-Playbook-to-Respond-to-a-Phishing-Incident">
+        <img src="https://user-images.githubusercontent.com/138132151/251564245-018d591c-0ae5-481a-87cf-f60c6c0fa908.png" alt="Phishing Playbook">
+        Phishing Response Playbook
       </a>
-  </div>
-<div class="mySlides fade">
+    </div>
+    <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Incident-Handiling-Journal" target="_blank">
-        <img src="https://user-images.githubusercontent.com/138132151/251552175-486cf680-fbcd-4a51-99bf-f41940882796.png" alt="Incident-Handiling-Journal">
+        <img src="https://user-images.githubusercontent.com/138132151/251552175-486cf680-fbcd-4a51-99bf-f41940882796.png" alt="Incident Journal">
+        Incident Handling Journal
       </a>
     </div>
-
-
-
-    <div class="mySlides fade">
+    <div class="project-card">
       <a href="https://www.linkedin.com/posts/marcosantibanez3_cybersecurity-onlinesafety-cybersecuremindset-activity-7191230415620202496-gvw_?utm_source=share&utm_medium=member_desktop&rcm=ACoAABxL4JIBTnJ_7rVkxKdLy-0UaL05t-ORUdA" target="_blank">
-        <img src="https://media.licdn.com/dms/image/v2/D5622AQHWoDWizQVQOA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714522935205?e=1747267200&v=beta&t=yerNZkoLJvEXZyKJfatrGIVB_Sc6k6w1pOJiU48xaR8" alt="Drive-By-Download">
+        <img src="https://media.licdn.com/dms/image/v2/D5622AQHWoDWizQVQOA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714522935205?e=1747267200&v=beta&t=yerNZkoLJvEXZyKJfatrGIVB_Sc6k6w1pOJiU48xaR8" alt="Drive-By Download">
+        Drive-By Download Threat
       </a>
     </div>
+  </section>
 
+  <section class="contact-section">
+    <h2>Contact Marco</h2>
+    <p>Reach out to discuss job opportunities, collaborations, or cybersecurity consulting.</p>
+    <form action="mailto:m.a.santibanez333@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-
-    
-
-
-
-
-
-
-
-
-
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $(".change").on("click", function () {
-        if ($("body").hasClass("dark")) {
-          $("body").removeClass("dark");
-          $(".change").text("OFF");
-        } else {
-          $("body").addClass("dark");
-          $(".change").text("ON");
-        }
-      });
-    });
-  </script>
-
-  <script>
-    let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let slides = document.getElementsByClassName("mySlides");
-  
-  // Hide all slides
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  
-  // Increment slide index, loop back if necessary
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1; }
-
-  // Show the current slide
-  slides[slideIndex - 1].style.display = "block";
-  
-  // Call the showSlides function again after 7 seconds
-  setTimeout(showSlides, 10000); 
-}
-
-      </script>
-  <hr><h6>
-  <p>Keeping your organization safe, one byte at a time.</p></h6>
+  <footer>
+    &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.
+  </footer>
 </body>
 </html>
+
