@@ -103,6 +103,13 @@
     scrollbar-color: #00ff88 #12161f;  /* Thumb and track colors */
     scrollbar-width: thin;  /* Set scrollbar width */
   }
+    .lock-cursor {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔒</text></svg>") 16 16, auto;
+  }
+
+  a img:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
+  }
     
     .carousel {
   display: flex;
@@ -326,13 +333,29 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
 
   <section class="contact-section">
     <h2>Contact Marco</h2>
-    <p>Reach out to discuss job opportunities, collaborations, cyber awareness training for small businesses to large enterprises,and/or cybersecurity consulting.</p>
-    <form action="https://formspree.io/f/mjkyzpzl" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <p>Reach out to discuss job opportunities, collaborations, cyber awareness training for small businesses to large enterprises, and/or cybersecurity consulting.</p>
+    
+    <form action="https://formspree.io/f/cxxxxxx" method="POST">
+  <!-- Optional: custom subject line -->
+  <input type="hidden" name="_subject" value="New message from my website">
+
+  <label>
+    Your Name:
+    <input type="text" name="name" placeholder="Your Name" required>
+  </label>
+
+  <label>
+    Your Email:
+    <input type="email" name="email" placeholder="Your Email" required>
+  </label>
+
+  <label>
+    Your Message:
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+  </label>
+
+  <button type="submit">Send Message</button>
+</form>
   </section>
 
   <footer>
