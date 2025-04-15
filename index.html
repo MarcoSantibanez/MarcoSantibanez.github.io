@@ -79,7 +79,31 @@
       max-width: 800px;
       margin: 0.5rem auto;
     }
+  /* Custom horizontal scrollbar for the entire page */
+  html::-webkit-scrollbar {
+    height: 12px;  /* Horizontal scrollbar height */
+  }
 
+  html::-webkit-scrollbar-track {
+    background: #12161f;  /* Track color */
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #00ff88cc;  /* Thumb color */
+    border-radius: 5px;
+    border: 2px solid #12161f;  /* Thumb border to match track */
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: #00ff88;  /* Thumb hover effect */
+  }
+
+  /* Firefox scrollbar styling for the entire page */
+  html {
+    scrollbar-color: #00ff88 #12161f;  /* Thumb and track colors */
+    scrollbar-width: thin;  /* Set scrollbar width */
+  }
+    
     .carousel {
   display: flex;
   overflow-x: auto;
@@ -107,6 +131,7 @@
   background-color: #00ff88cc; /* green-glow */
   border-radius: 5px;
   border: 2px solid #12161f; /* matches track */
+  animation: pulse-glow 2s infinite;
 }
 
 .carousel::-webkit-scrollbar-thumb:hover {
