@@ -150,18 +150,7 @@
 	   .carousel__slider {
       display: flex;
       gap: 2rem;
-      animation: scroll-left linear 60s infinite; /* Add marquee animation */
     }
-
-    .carousel:hover .carousel__slider {
-      animation-play-state: paused; /* Pause the scrolling when hovered */
-    }
-@keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
       }	  
     .project-card {
       flex: 0 0 300px;
@@ -526,44 +515,57 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.
   </footer>
 <script>
-  const carousel = document.querySelector(".carousel");
+  const carousel = document.getElementById("carousel");
   const slider = document.getElementById("carouselSlider");
 
-<script>
-  const carousel = document.querySelector(".carousel");
-  const slider = document.getElementById("carouselSlider");
-
-  // Clone all project cards for seamless looping
   const cards = Array.from(slider.children);
+  const cloneCount = cards.length;
+
+  // Clone cards for looping effect
   cards.forEach(card => {
     const clone = card.cloneNode(true);
     slider.appendChild(clone);
   });
 
-  let isResetting = false;
+  // Scroll position helpers
+  const cardWidth = cards[0].offsetWidth + 32; // card + gap
+  const scrollStep = 0.5; // speed of auto-scroll
+  const resetPoint = cardWidth * cloneCount;
 
-  // When the user scrolls, manage looping manually
-  carousel.addEventListener("scroll", () => {
-    if (isResetting) return;
+  // Set initial position to start in the middle
+  carousel.scrollLeft = resetPoint;
 
-    const scrollLeft = carousel.scrollLeft;
-    const totalScrollWidth = slider.scrollWidth;
-    const halfWidth = totalScrollWidth / 2;
+  let isHovered = false;
 
-    if (scrollLeft >= halfWidth) {
-      isResetting = true;
-      carousel.scrollLeft = scrollLeft - halfWidth;
-      isResetting = false;
+  // Auto-scroll animation using requestAnimationFrame
+  function autoScroll() {
+    if (!isHovered) {
+      carousel.scrollLeft += scrollStep;
+
+      // Reset scroll when reaching the end of clones
+      if (carousel.scrollLeft >= slider.scrollWidth - resetPoint) {
+        carousel.scrollLeft -= resetPoint;
+      }
     }
 
-    if (scrollLeft <= 0) {
-      isResetting = true;
-      carousel.scrollLeft = scrollLeft + halfWidth;
-      isResetting = false;
+    requestAnimationFrame(autoScroll);
+  }
+
+  requestAnimationFrame(autoScroll);
+
+  // Pause when hovering
+  carousel.addEventListener("mouseenter", () => isHovered = true);
+  carousel.addEventListener("mouseleave", () => isHovered = false);
+
+  // Handle seamless looping if user scrolls manually
+  carousel.addEventListener("scroll", () => {
+    if (carousel.scrollLeft <= 0) {
+      carousel.scrollLeft += resetPoint;
+    } else if (carousel.scrollLeft >= slider.scrollWidth - resetPoint) {
+      carousel.scrollLeft -= resetPoint;
     }
   });
 </script>
-
 	
 </body>
 </html>
