@@ -160,7 +160,10 @@
 
 /* For reverse direction */
 .carousel__slider.reverse {
+  display: flex;
+  gap: 2rem;
   animation: marquee-reverse linear 120s infinite;
+  min-width: 200%; /* Same width, independent of the top */
 }
 
     .carousel:hover .carousel__slider {
