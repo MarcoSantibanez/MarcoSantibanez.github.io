@@ -132,6 +132,10 @@
 .carousel::-webkit-scrollbar {
   height: 10px;
 }
+.carousel-section {
+  margin-bottom: 3rem;
+}
+
 
 .carousel::-webkit-scrollbar-track {
   background: #12161f; /* dark-panel */
@@ -147,11 +151,17 @@
 .carousel::-webkit-scrollbar-thumb:hover {
   background-color: #00ff88; /* bright neon green */
 }
-	   .carousel__slider {
-      display: flex;
-      gap: 2rem;
-      animation: marquee linear 88s infinite; /* Add marquee animation */
-    }
+.carousel__slider {
+  display: flex;
+  gap: 2rem;
+  animation: marquee linear 88s infinite;
+  min-width: 200%;
+}
+
+/* For reverse direction */
+.carousel__slider.reverse {
+  animation: marquee-reverse linear 120s infinite;
+}
 
     .carousel:hover .carousel__slider {
       animation-play-state: paused; /* Pause the scrolling when hovered */
@@ -201,6 +211,15 @@
         transform: translateX(-50%);
       }
     }
+	  @keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
     .contact-section label {
   display: flex;
   flex-direction: column;
@@ -285,7 +304,8 @@
 click the corresponding image to access it on GitHub or LinkedIn</p>
   </section>
 
-  <section class="Top carousel">
+  <section class="carousel">
+<div class="carousel">
     <div class="carousel__slider">
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
@@ -383,8 +403,12 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
         Improved AAA for Small Business
       </a>
     </div>
+    </div>
+	</div>
   </section>
-<section class="Bottom carousel">
+<section class="carousel">
+	<div class="carousel">
+	<div class="carousel__slider reverse">
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Message-Decryption" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Message%20Decryption'.png">
@@ -646,6 +670,7 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
 	  </a>
 	</div>
 </div>
+</div>
   </section>
 
   <section class="contact-section">
@@ -677,5 +702,16 @@ click the corresponding image to access it on GitHub or LinkedIn</p>
   <footer>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.
   </footer>
+	<script>
+  document.querySelectorAll('.carousel__slider').forEach(slider => {
+    const cards = Array.from(slider.children);
+    cards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('cloned');
+      slider.appendChild(clone);
+    });
+  });
+</script>
+
 </body>
 </html>
