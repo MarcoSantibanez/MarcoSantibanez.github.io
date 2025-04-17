@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marco Santibanez' Cybersecurity Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marco Santibanez – Cybersecurity Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -15,12 +15,37 @@
       --text-light: #e3e3e3;
       --molten-gold: #FFCC33;
       --border-glow: rgba(0, 255, 136, 0.3);
+      --carousel2-accent: #00eaff;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scrollbar-color: var(--green-neon) var(--dark-panel);
+      scrollbar-width: thin;
+    }
+
+    html::-webkit-scrollbar {
+      height: 12px;
+      width: 10px;
+    }
+
+    html::-webkit-scrollbar-track {
+      background: var(--dark-panel);
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background-color: var(--green-glow);
+      border-radius: 5px;
+      border: 2px solid var(--dark-panel);
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+      background-color: var(--green-neon);
     }
 
     body {
@@ -80,86 +105,51 @@
       max-width: 800px;
       margin: 0.5rem auto;
     }
-  /* Custom horizontal scrollbar for the entire page */
-  html::-webkit-scrollbar {
-    height: 12px;  /* Horizontal scrollbar height */
-  }
 
-  html::-webkit-scrollbar-track {
-    background: #12161f;  /* Track color */
-  }
-
-  html::-webkit-scrollbar-thumb {
-    background-color: #00ff88cc;  /* Thumb color */
-    border-radius: 5px;
-    border: 2px solid #12161f;  /* Thumb border to match track */
-  }
-
-  html::-webkit-scrollbar-thumb:hover {
-    background-color: #00ff88;  /* Thumb hover effect */
-  }
-
-  /* Firefox scrollbar styling for the entire page */
-  html {
-    scrollbar-color: #00ff88 #12161f;  /* Thumb and track colors */
-    scrollbar-width: thin;  /* Set scrollbar width */
-  }
-    .lock-cursor {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔒</text></svg>") 16 16, auto;
-  }
-
-  a img:hover {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
-  }
-    
     .carousel {
-   mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
-  display: flex;
-  overflow-x: hidden;
-  gap: 2rem;
-  scroll-snap-type: x mandatory;
-  padding: 3rem 2rem;
-  scroll-behavior: smooth;
-  background: #0b0f17; /* dark-bg */
-  position: relative;
-  width: 100%;
+      mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
+      display: flex;
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      padding: 3rem 2rem;
+      background: var(--dark-bg);
+      position: relative;
+      width: 100%;
+      scrollbar-color: var(--green-neon) var(--dark-panel);
+      scrollbar-width: thin;
+    }
 
-  /* Firefox support */
-  scrollbar-color: #00ff88 #12161f; /* green-neon thumb on dark-panel track */
-  scrollbar-width: thin;
-}
+    .carousel::-webkit-scrollbar {
+      height: 10px;
+    }
 
-/* Chrome/Safari/Edge scrollbar styling */
-.carousel::-webkit-scrollbar {
-  height: 10px;
-}
+    .carousel::-webkit-scrollbar-track {
+      background: var(--dark-panel);
+    }
 
-.carousel::-webkit-scrollbar-track {
-  background: #12161f; /* dark-panel */
-}
+    .carousel::-webkit-scrollbar-thumb {
+      background-color: var(--green-glow);
+      border-radius: 5px;
+      border: 2px solid var(--dark-panel);
+      animation: pulse-glow 2s infinite;
+    }
 
-.carousel::-webkit-scrollbar-thumb {
-  background-color: #00ff88cc; /* green-glow */
-  border-radius: 5px;
-  border: 2px solid #12161f; /* matches track */
-  animation: pulse-glow 2s infinite;
-}
+    .carousel::-webkit-scrollbar-thumb:hover {
+      background-color: var(--green-neon);
+    }
 
-.carousel::-webkit-scrollbar-thumb:hover {
-  background-color: #00ff88; /* bright neon green */
-}
-	   .carousel__slider {
+    .carousel__slider {
       display: flex;
       gap: 2rem;
-      animation: marquee linear 77s infinite; /* Add marquee animation */
-	min-width: 1500%; 
+      animation: marquee linear 77s infinite;
+      min-width: 1500%;
     }
 
     .carousel:hover .carousel__slider {
-      animation-play-state: paused; /* Pause the scrolling when hovered */
+      animation-play-state: paused;
     }
-	  
+
     .project-card {
       flex: 0 0 300px;
       scroll-snap-align: center;
@@ -195,22 +185,21 @@
     .project-card a:hover {
       background: rgba(0, 255, 136, 0.08);
     }
-	
-    @keyframes marquee {
-      from {
-        transform: translateX(0%);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
     }
-    .contact-section label {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  color: white;
-  font-size: 0.9rem;
-  }
+
+    .carousel-indicators .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #444;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
 
     .contact-section {
       background: #12151d;
@@ -224,12 +213,28 @@
       margin-bottom: 1rem;
     }
 
+    .contact-section p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
     .contact-section form {
+      width: 100%;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto; /* Center horizontally */
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .contact-section label {
+      display: flex;
+      flex-direction: column;
+      color: var(--text-light);
+      font-size: 0.9rem;
     }
 
     .contact-section input,
@@ -240,10 +245,12 @@
       background: #1a1e29;
       color: white;
       font-family: 'Orbitron', sans-serif;
+      margin-top: 0.25rem;
     }
 
     .contact-section button {
-      padding: 1rem;
+      align-self: center;
+      padding: 1rem 2rem;
       border: none;
       border-radius: 8px;
       background: var(--green-neon);
@@ -260,36 +267,64 @@
       border: 1px solid var(--green-neon);
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0b0f17;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #1f1f1f;
+
+    .carousel-indicators .dot.active {
+      background-color: var(--green-neon);
     }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+      }
+      50% {
+        box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel__slider {
+        animation: none !important;
+        min-width: auto !important;
+        gap: 1rem;
+      }
+      .carousel {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
   </style>
 </head>
 <body>
   <header>
-    <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" alt="Marco Santibanez">
+    <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" alt="Marco Santibanez" />
     <h1>Marco Santibanez</h1>
     <p>Certified Cybersecurity Analyst passionate about helping organizations stay secure, resilient, and ahead of evolving digital threats.</p>
   </header>
 
   <section class="qualifications">
     <h2>Cybersecurity Credentials & Goals</h2>
-    <p>🔐 CompTIA Security+ Certified <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SecurityPlus%20Logo%20Certified%20CE%20see-through.png" alt="Sec+ Logo"></p>
-    <p>🔍 Google Cybersecurity Certificate<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" style="height: 1.5em;"></p>
+    <p>🔐 CompTIA Security+ Certified</p>
+    <p>🔍 Google Cybersecurity Certificate</p>
     <p>🧠 Continuously learning and developing advanced SOC and threat detection capabilities</p>
     <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
     <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p>
-    <p>‼️For a comprehensive view of each project, including technical documentation and context, please
-click the corresponding image to access it on GitHub or LinkedIn‼️ style="color: var(--green-glow)</p>
   </section>
 
+  <!-- First Carousel -->
   <section class="carousel">
     <div class="carousel__slider">
+
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
         <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Botium Toys">
@@ -444,13 +479,13 @@ click the corresponding image to access it on GitHub or LinkedIn‼️ style="co
       <a href="https://github.com/MarcoSantibanez/yummyrecipesforme?tab=readme-ov-file" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/DNS%20and%20ICMP%20Traffic.png">
         Network Traffic Analysis  
-	  </a>
+    </a>
     </div>
 <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Install-software-in-a-Linux-distribution" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SuricataInstall.png">
         Linux Software Installation  
-	  </a>
+    </a>
     </div>
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
@@ -606,83 +641,201 @@ click the corresponding image to access it on GitHub or LinkedIn‼️ style="co
       <a href="https://github.com/MarcoSantibanez/yummyrecipesforme?tab=readme-ov-file" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/DNS%20and%20ICMP%20Traffic.png">
         Network Traffic Analysis  
-	  </a>
+    </a>
     </div>
 <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Install-software-in-a-Linux-distribution" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SuricataInstall.png">
         Linux Software Installation  
-	  </a>
+    </a>
     </div>
 <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Install-software-in-a-Linux-distribution" target="_blank">
         <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SuricataInstall.png">
         Linux Software Installation  
-	  </a>
+    </a>
     </div>
 
 <div class="project-card">
       <a href="https://www.linkedin.com/feed/update/urn:li:activity:7142382223957110784/" target="_blank">
         <img src="https://media.licdn.com/dms/image/v2/D5622AQGqUdxBU6SfGg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1702876619642?e=1747872000&v=beta&t=YhE63hNgkkLQqooHcUE2zY2st5LvEou4cnGfsjGhmAg">
         Social Media Advocacy: Defending Against Cyber Threats with Strong Passwords
-	  </a>
+    </a>
     </div>
 <div class="project-card">
       <a href="https://www.linkedin.com/feed/update/urn:li:activity:7157371074161106944/" target="_blank">
         <img src="https://media.licdn.com/dms/image/v2/D5622AQEArItZvYdGxw/feedshare-shrink_800/feedshare-shrink_800/0/1706450239739?e=1747872000&v=beta&t=2b7oNkwPzOYnA6o69SAW_47YPYSvMvcbmrA1pxpjXMw">
         Cybersecurity Insights: How Legacy Systems Undermine Security Posture
-	  </a>
+    </a>
     </div>
-	<div class="project-card">
+  <div class="project-card">
       <a href="https://www.linkedin.com/posts/marcosantibanez3_cybersecurity-iot-smartdevices-activity-7278029445750300672-FoYW?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABxL4JIBTnJ_7rVkxKdLy-0UaL05t-ORUdA" target="_blank">
         <img src="https://media.licdn.com/dms/image/v2/D5622AQETxzpHh8xdEw/feedshare-shrink_800/B56ZQDBNt1GQAg-/0/1735217437864?e=1747872000&v=beta&t=_WHotb-qLGYaRcyknNCLzlSCR7M5msyMqlxuNYqGlqI">
         Balancing Convenience and Security in the Age of IoT
-	  </a>
+    </a>
     </div>
 <div class="project-card">
       <a href="https://www.linkedin.com/posts/marcosantibanez3_2fa-cybersecurity-passwordsecurity-activity-7192882770723889154-_Ztc?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABxL4JIBTnJ_7rVkxKdLy-0UaL05t-ORUdA" target="_blank">
         <img src="https://media.licdn.com/dms/image/v2/D5622AQGwDMaYf_aMLw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714916889060?e=1747872000&v=beta&t=qjP4poxnjpKJ-k_CNopcTsjnBYD6nAiRdpkXc4Gcli0">
        Cybersecurity Awareness Post: Two-Factor Authentication Explained
-	  </a>
+    </a>
     </div>
-	<div class="project-card">
+  <div class="project-card">
       <a href="https://www.linkedin.com/posts/marcosantibanez3_nft-cybersecurity-phishingawareness-activity-7128822205563502592-ReDf?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABxL4JIBTnJ_7rVkxKdLy-0UaL05t-ORUdA" target="_blank">
         <img src="https://media.licdn.com/dms/image/v2/D5622AQGllTPWUosOYw/feedshare-shrink_1280/feedshare-shrink_1280/0/1699643660213?e=1747872000&v=beta&t=JRFPbbt-u_IRHiJXBKh4HyN4ygKXSJBbGBzK9Hfq0sg">
        Phishing Email Red Flags: A Quick Guide to Staying Safe 
-	  </a>
-	</div>
-</div>
+    </a>
+  </div>
 
+    </div>
+    <div class="carousel-indicators" id="main-carousel-dots"></div>
   </section>
 
-  <section class="contact-section">
+  <!-- Second Carousel: Certifications Gallery -->
+  <section class="certifications-carousel">
+    <h2 style="text-align:center; color: var(--molten-gold); font-size: 1.8rem; margin-top: 2rem;">Certifications Gallery</h2>
+    <div class="certifications__slider">
+      <div class="cert-card">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/main/SecurityPlus%20Logo%20Certified%20CE%20see-through.png" alt="Security+ Certified" />
+        <p>CompTIA Security+ Certified</p>
+      </div>
+      <div class="cert-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Cyber Cert" />
+        <p>Google Cybersecurity Certificate</p>
+      </div>
+      <!-- Add more certifications as needed -->
+    </div>
+    <div class="carousel-indicators" id="cert-carousel-dots"></div>
+  </section>
+
+  <style>
+    .certifications-carousel {
+      background: #10141c;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    .certifications__slider {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .certifications__slider::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .certifications__slider::-webkit-scrollbar-thumb {
+      background: var(--green-glow);
+      border-radius: 10px;
+    }
+
+    .cert-card {
+      flex: 0 0 280px;
+      background-color: #0c121b;
+      border: 1px solid var(--line-accent);
+      border-radius: 12px;
+      scroll-snap-align: center;
+      box-shadow: 0 0 12px var(--border-glow);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .cert-card p {
+      color: var(--green-neon);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .cert-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const setupDots = (sliderSelector, dotsId) => {
+        const slider = document.querySelector(sliderSelector);
+        const cards = slider.querySelectorAll('div');
+        const dotsContainer = document.getElementById(dotsId);
+
+        cards.forEach((_, i) => {
+          const dot = document.createElement('div');
+          dot.className = 'dot';
+          if (i === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        });
+
+        slider.addEventListener('scroll', () => {
+          const scrollLeft = slider.scrollLeft;
+          const cardWidth = cards[0].offsetWidth + 16;
+          const index = Math.round(scrollLeft / cardWidth);
+          const dots = dotsContainer.querySelectorAll('.dot');
+          dots.forEach(dot => dot.classList.remove('active'));
+          if (dots[index]) dots[index].classList.add('active');
+        });
+      };
+
+      setupDots('.carousel__slider', 'main-carousel-dots');
+      setupDots('.certifications__slider', 'cert-carousel-dots');
+    });
+  </script>
+
+    <section class="contact-section">
     <h2>Contact Marco</h2>
-    <p>Reach out to discuss job opportunities, collaborations, cyber awareness training for small businesses to large enterprises, and/or cybersecurity consulting.</p>
-    <br>
-    <br>
-    
+    <p>Reach out to discuss job opportunities, collaborations, cyber awareness training, or cybersecurity consulting.</p>
+    <br><br>
     <form action="https://formspree.io/f/mjkyzpzl" method="POST">
-  <!-- Optional: custom subject line -->
-  <input type="hidden" name="_subject" value="New message from my website">
-
-  <label>
-    <input type="text" name="name" placeholder="Your Name" required>
-  </label>
-
-  <label>
-    <input type="email" name="email" placeholder="Your Email" required>
-  </label>
-
-  <label>
-    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-  </label>
-
-  <button type="submit">Send Message</button>
-</form>
+      <input type="hidden" name="_subject" value="New message from my website">
+      <label>
+        <input type="text" name="name" placeholder="Your Name" required>
+      </label>
+      <label>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </label>
+      <label>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.
   </footer>
+
+  <style>
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 8px;
+    }
+
+    .carousel-indicators .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #444;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel-indicators .dot.active {
+      background-color: var(--green-neon);
+    }
+  </style>
 </body>
 </html>
+
+
