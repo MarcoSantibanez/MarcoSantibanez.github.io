@@ -379,6 +379,38 @@
   transform: scale(1.05); /* Slight zoom effect */
   outline: none; /* Remove outline */
 }
+    #next-button {
+  background: var(--blue-neon, #00f); /* Fallback blue if var isn't defined */
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: #0b0f17;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+#next-button:hover {
+  background: #0b0f17;
+  color: var(--blue-neon, #00f);
+  box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
+}
+
+#next-button:focus,
+#next-button:active {
+  transform: scale(1.05);
+  outline: none;
+}
+.button-row {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
 
 footer {
   display: flex;
@@ -504,11 +536,14 @@ footer p, footer a {
   <div id="quiz-container">
     <p id="question">What is this email trying to do?</p>
     <div class="choices">
-      <button onclick="checkAnswer('phishing')">Phishing</button>
-      <button onclick="checkAnswer('legit')">Legitimate</button>
+      <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
+<button onclick="checkAnswer('Legit')">✅ Legitimate</button>
     </div>
+    <div class="button-row">
     <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
     <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
+    </div>
+  
     <div class="result-text" id="result-text"></div>
   </div>
 </section>
