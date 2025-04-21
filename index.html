@@ -308,16 +308,15 @@
   padding: 2rem;
   border-radius: 12px; /* Rounded corners for the content area */
   box-shadow: 0 0 15px var(--border-glow); /* Add glowing border effect */
+  position: relative; /* Ensures the z-index works properly */
 }
 
-/* Style for the question text */
 #question {
   font-size: 1.25rem; /* Larger font size for visibility */
   margin-bottom: 1.5rem; /* Space between question and choices */
   color: var(--text-light); /* Light text color */
 }
 
-/* Style for the answer buttons */
 .choices button {
   background: var(--green-neon); /* Neon green background */
   border: none;
@@ -344,7 +343,6 @@
   outline: none; /* Remove focus outline */
 }
 
-/* Optionally add a result text for after choosing an answer */
 .result-text {
   margin-top: 1.5rem;
   font-size: 1.2rem;
@@ -354,7 +352,8 @@
   animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
 }
 
-    #reload-button {
+/* Styling for reload button */
+#reload-button {
   background: var(--molten-gold); /* Different color for the reload button */
   border: none;
   padding: 1rem 2rem; /* Same padding as the other buttons */
@@ -379,7 +378,9 @@
   transform: scale(1.05); /* Slight zoom effect */
   outline: none; /* Remove outline */
 }
-    #next-button {
+
+/* Styling for next button */
+#next-button {
   background: var(--blue-neon, #00f); /* Fallback blue if var isn't defined */
   border: none;
   padding: 1rem 2rem;
@@ -404,12 +405,17 @@
   transform: scale(1.05);
   outline: none;
 }
+
+/* Adjust layout of buttons in button-row */
 .button-row {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
+  position: relative; /* Ensure buttons appear above content */
+  z-index: 10; /* Ensure buttons appear above content */
 }
+
 
 
 footer {
@@ -531,22 +537,22 @@ footer p, footer a {
     <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
     <p>Why Marco❔ “He applies technical precision and a cybersecurity-first mindset to solve complex problems, strengthen digital defenses, and translate awareness into measurable action.”</p> 
     <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p><br><br><br>
- <section class="phishing-quiz">
+<section class="phishing-quiz">
   <h2>Phishing Awareness Quiz</h2>
   <div id="quiz-container">
     <p id="question">What is this email trying to do?</p>
     <div class="choices">
       <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
-<button onclick="checkAnswer('Legit')">✅ Legitimate</button>
+      <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
     </div>
     <div class="button-row">
-    <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
-    <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
+      <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
+      <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
     </div>
-  
     <div class="result-text" id="result-text"></div>
   </div>
 </section>
+
 
 
 
@@ -1115,7 +1121,7 @@ function reloadQuiz() {
     <h2>Contact Marco</h2>
     <p>Reach out to discuss job opportunities, collaborations, cyber awareness training, or cybersecurity consulting.</p>
     <br><br>
-    <form action="https://formspree.io/f/mjkyzpzl" method="POST">
+    <form action="https://formspree.io/f/mjkyzpzl" method="POST" autocomplete="on">
       <input type="hidden" name="_subject" value="New message from my website">
       <label>
         <input type="text" name="name" placeholder="Your Name" required>
