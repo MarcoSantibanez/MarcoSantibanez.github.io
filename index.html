@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marco Santibanez – Cybersecurity Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -508,8 +507,8 @@ footer p, footer a {
       <button onclick="checkAnswer('phishing')">Phishing</button>
       <button onclick="checkAnswer('legit')">Legitimate</button>
     </div>
-    <button id="next-button" onclick="nextQuestion()">↻</button>
-    <button id="reload-button" onclick="reloadQuiz()">⏭</button> 
+    <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
+    <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
     <div class="result-text" id="result-text"></div>
   </div>
 </section>
