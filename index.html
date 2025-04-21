@@ -278,6 +278,112 @@
     .carousel-indicators .dot.active {
       background-color: var(--green-neon);
     }
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  background: var(--dark-panel);
+  border-radius: 10px;
+}
+
+.email-card {
+  background: #12161f;
+  border: 1px solid #00ffaa44;
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-family: sans-serif;
+  color: #e3e3e3;
+  box-shadow: 0 0 10px #00ff8866;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--green-glow);
+}
+
+.email-header {
+  font-size: 0.9rem;
+  color: var(--green-neon);
+  font-weight: bold;
+}
+
+.email-body p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.answer-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.answer-buttons button {
+  background: #00ff88;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: #0b0f17;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.answer-buttons button:hover {
+  background: #0b0f17;
+  color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.answer-buttons button:focus,
+.answer-buttons button:active {
+  background: #00ffaa;
+  outline: none;
+  transform: scale(1.05);
+}
+
+.result-text {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.correct {
+  color: lime;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.incorrect {
+  color: red;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+
+  .email-card {
+    padding: 1rem;
+  }
+
+  .answer-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+    
 footer {
   display: flex;
   justify-content: center;
@@ -332,7 +438,21 @@ footer {
         box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
       }
     }
+    @keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+@media (max-width: 768px) {
+  .quiz-grid {
+    padding: 1rem;
+  }
     @media (max-width: 768px) {
       .carousel__slider {
         animation: none !important;
@@ -366,7 +486,21 @@ footer {
     <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
     <p>Why Marco❔ “He applies technical precision and a cybersecurity-first mindset to solve complex problems, strengthen digital defenses, and translate awareness into measurable action.”</p> 
     <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p><br><br><br>
-   <p class="project-instructions"> For a comprehensive view of each project, including technical documentation and context, please
+   <section class="phishing-quiz">
+  <h2>Phishing Awareness Quiz</h2>
+  <div id="quiz-container">
+    <p id="question">Loading question...</p>
+    <div class="choices">
+      <button onclick="checkAnswer('phishing')">Phishing</button>
+      <button onclick="checkAnswer('legit')">Legitimate</button>
+    </div>
+    <p id="feedback"></p>
+    <button id="next-btn" onclick="nextQuestion()">Next</button>
+  </div>
+</section>
+
+    
+    <p class="project-instructions"> For a comprehensive view of each project, including technical documentation and context, please
 click the corresponding image to access it on GitHub or LinkedIn </p>
   </section>
 
@@ -812,6 +946,67 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
       box-shadow: 0 0 20px var(--green-glow);
     }
   </style>
+
+  <script>
+  const questions = [
+    { text: "You receive an email from your bank asking you to urgently verify your account by clicking a link. The URL looks suspicious.", answer: "Phishing" },
+    { text: "An email from your coworker includes an invoice PDF and matches their email and writing style.", answer: "Legit" },
+    { text: "An unexpected email says you’ve won a free iPhone and asks for your shipping info.", answer: "Phishing" },
+    { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" }
+  ];
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("quiz-container"); // Make sure the container ID matches
+    if (!container) {
+      console.error("Quiz container not found!");
+      return;
+    }
+    renderQuestion(container);
+  });
+
+  function renderQuestion(container) {
+    if (currentQuestionIndex < questions.length) {
+      const question = questions[currentQuestionIndex];
+      container.innerHTML = `
+        <p id="question">${question.text}</p>
+        <div class="choices">
+          <button onclick="checkAnswer('Phishing')">Phishing</button>
+          <button onclick="checkAnswer('Legit')">Legit</button>
+        </div>
+        <p id="feedback"></p>
+        <button id="next-btn" onclick="nextQuestion()">Next</button>
+      `;
+    }
+  }
+
+  window.checkAnswer = function (selectedAnswer) {
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    const feedback = document.getElementById('feedback');
+    if (selectedAnswer === correctAnswer) {
+      score++;
+      feedback.textContent = "Correct!";
+    } else {
+      feedback.textContent = "Incorrect!";
+    }
+
+    // Disable buttons after selection
+    const buttons = document.querySelectorAll(".choices button");
+    buttons.forEach(button => button.disabled = true);
+  };
+
+  function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      renderQuestion(document.getElementById("quiz-container"));
+    } else {
+      alert(`Quiz complete! Your score: ${score}/${questions.length}`);
+    }
+  }
+</script>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
