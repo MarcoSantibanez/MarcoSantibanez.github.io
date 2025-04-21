@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marco Santibanez – Cybersecurity Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>  
     :root {
       --green-neon: #00ff88;
       --green-glow: #00ff88cc;
@@ -279,123 +284,131 @@
       background-color: var(--green-neon);
     }
 
-.quiz-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+/* Styling the overall phishing quiz section */
+.phishing-quiz {
+  background-color: var(--dark-panel); /* Dark background to match your theme */
+  padding: 3rem 2rem; /* Add padding for spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 0 20px var(--border-glow); /* Neon glow effect around the container */
+  text-align: center; /* Center-align text */
+  max-width: 600px; /* Limit width for better presentation */
+  margin: 2rem auto; /* Center the quiz container */
+}
+
+.phishing-quiz h2 {
+  color: var(--green-neon); /* Neon green text for the title */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem; /* Space below the title */
+}
+
+#quiz-container {
+  font-family: 'Orbitron', sans-serif; /* Same font as the rest of your page */
+  color: var(--text-light); /* Light text for readability */
+  background: var(--dark-panel); /* Ensure background stays consistent */
   padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-  background: var(--dark-panel);
-  border-radius: 10px;
+  border-radius: 12px; /* Rounded corners for the content area */
+  box-shadow: 0 0 15px var(--border-glow); /* Add glowing border effect */
 }
 
-.email-card {
-  background: #12161f;
-  border: 1px solid #00ffaa44;
-  border-radius: 10px;
-  padding: 1.5rem;
-  font-family: sans-serif;
-  color: #e3e3e3;
-  box-shadow: 0 0 10px #00ff8866;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Style for the question text */
+#question {
+  font-size: 1.25rem; /* Larger font size for visibility */
+  margin-bottom: 1.5rem; /* Space between question and choices */
+  color: var(--text-light); /* Light text color */
 }
 
-.email-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--green-glow);
-}
-
-.email-header {
-  font-size: 0.9rem;
-  color: var(--green-neon);
-  font-weight: bold;
-}
-
-.email-body p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: var(--text-light);
-}
-
-.answer-buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.answer-buttons button {
-  background: #00ff88;
+/* Style for the answer buttons */
+.choices button {
+  background: var(--green-neon); /* Neon green background */
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  color: #0b0f17;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-
-.answer-buttons button:hover {
-  background: #0b0f17;
-  color: #00ff88;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-}
-
-.answer-buttons button:focus,
-.answer-buttons button:active {
-  background: #00ffaa;
-  outline: none;
-  transform: scale(1.05);
-}
-
-.result-text {
-  margin-top: 0.5rem;
-  font-weight: bold;
+  padding: 1rem 2rem; /* Button padding */
+  border-radius: 8px; /* Rounded button corners */
+  color: #0b0f17; /* Dark text on the neon green background */
   font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem; /* Space between buttons */
+  cursor: pointer; /* Pointer cursor for buttons */
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); /* Subtle glowing effect on buttons */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+}
+
+.choices button:hover {
+  background: #0b0f17; /* Darker background on hover */
+  color: var(--green-neon); /* Neon green text on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Enhanced glow effect on hover */
+}
+
+.choices button:focus,
+.choices button:active {
+  transform: scale(1.05); /* Slight zoom effect when button is active */
+  outline: none; /* Remove focus outline */
+}
+
+/* Optionally add a result text for after choosing an answer */
+.result-text {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   color: var(--text-light);
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
 }
 
-.correct {
-  color: lime;
-  font-size: 1.2rem;
-  text-transform: uppercase;
+    #reload-button {
+  background: var(--molten-gold); /* Different color for the reload button */
+  border: none;
+  padding: 1rem 2rem; /* Same padding as the other buttons */
+  border-radius: 8px;
+  color: #0b0f17; /* Dark text on the golden background */
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1.5rem; /* Space between buttons */
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 204, 51, 0.3); /* Glow effect */
+  transition: all 0.3s ease; /* Smooth transition */
 }
 
-.incorrect {
-  color: red;
-  font-size: 1.2rem;
-  text-transform: uppercase;
+#reload-button:hover {
+  background: #0b0f17; /* Darker background on hover */
+  color: var(--molten-gold); /* Gold text on hover */
+  box-shadow: 0 0 25px rgba(255, 204, 51, 0.5); /* Enhanced glow */
 }
 
-
-  .email-card {
-    padding: 1rem;
-  }
-
-  .answer-buttons button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
+#reload-button:focus,
+#reload-button:active {
+  transform: scale(1.05); /* Slight zoom effect */
+  outline: none; /* Remove outline */
 }
 
-    
 footer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  flex-direction: column;   /* Stack elements vertically if necessary */
   padding: 2rem;
   background: #0b0f17;
   font-size: 0.9rem;
   color: #888;
   border-top: 1px solid #1f1f1f;
-  text-align: center;
-  width: 100%;
+  width: 100%;  /* Ensure the footer spans the entire width */
+  height: 100px; /* Set a height to ensure vertical centering */
 }
+
+footer div {
+  text-align: center; /* Ensure text inside any child divs is centered */
+}
+
+footer * {
+  margin: 0;   /* Remove any margin */
+  padding: 0;  /* Remove any padding */
+}
+
+footer p, footer a {
+  width: 100%;  /* Ensure child text or links span the full width */
+  text-align: center;
+}
+
 .project-instructions {
   text-align: center;
   color: #0b0f17; /* dark text on light-ish glow */
@@ -470,6 +483,7 @@ footer {
   }
 }
     }
+  
   </style>
 </head>
 <body>
@@ -486,18 +500,21 @@ footer {
     <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
     <p>Why Marco❔ “He applies technical precision and a cybersecurity-first mindset to solve complex problems, strengthen digital defenses, and translate awareness into measurable action.”</p> 
     <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p><br><br><br>
-   <section class="phishing-quiz">
+ <section class="phishing-quiz">
   <h2>Phishing Awareness Quiz</h2>
   <div id="quiz-container">
-    <p id="question">Loading question...</p>
+    <p id="question">What is this email trying to do?</p>
     <div class="choices">
       <button onclick="checkAnswer('phishing')">Phishing</button>
       <button onclick="checkAnswer('legit')">Legitimate</button>
     </div>
-    <p id="feedback"></p>
-    <button id="next-btn" onclick="nextQuestion()">Next</button>
+    <button id="next-button" onclick="nextQuestion()">↻</button>
+    <button id="reload-button" onclick="reloadQuiz()">⏭</button> 
+    <div class="result-text" id="result-text"></div>
   </div>
 </section>
+
+
 
     
     <p class="project-instructions"> For a comprehensive view of each project, including technical documentation and context, please
@@ -952,7 +969,17 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     { text: "You receive an email from your bank asking you to urgently verify your account by clicking a link. The URL looks suspicious.", answer: "Phishing" },
     { text: "An email from your coworker includes an invoice PDF and matches their email and writing style.", answer: "Legit" },
     { text: "An unexpected email says you’ve won a free iPhone and asks for your shipping info.", answer: "Phishing" },
-    { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" }
+    { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" },
+    { text: "An email claims your Netflix account is suspended and asks you to log in via a link, but the URL is 'netflix-security-check.com'.", answer: "Phishing" },
+    { text: "You receive an email from IT support asking you to install a software update. The email is from 'support@yourcompany.com'.", answer: "Legit" },
+    { text: "A message from PayPal says there's suspicious activity on your account and asks you to confirm personal details through a link.", answer: "Phishing" },
+    { text: "You get a password reset email for an app you use, but you didn’t request it. The sender is 'no-reply@theapp.com'.", answer: "Legit" },
+    { text: "An email offers a free gift card if you complete a quick survey. It’s from a sketchy-looking domain like 'giftznow.co'.", answer: "Phishing" },
+    { text: "You receive an email from HR about upcoming benefits enrollment with a link to the internal portal.", answer: "Legit" },
+    { text: "An email has a Microsoft logo and says your OneDrive is almost full. It asks you to log in through a shortened URL.", answer: "Phishing" },
+    { text: "Your email provider alerts you that your mailbox is over its quota, and the link points to 'mail-login-update.com'.", answer: "Phishing" },
+    { text: "You receive a confirmation email after signing up for a newsletter. It contains a 'confirm subscription' button.", answer: "Legit" },
+    { text: "An email claims to be from Amazon but has typos, a weird sender like 'amazn@deals-now.ru', and a sketchy link.", answer: "Phishing" }
   ];
 
   let currentQuestionIndex = 0;
@@ -1004,10 +1031,23 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     } else {
       alert(`Quiz complete! Your score: ${score}/${questions.length}`);
     }
+function reloadQuiz() {
+  // Reset the quiz state
+  currentQuestionIndex = 0;
+  
+  // Reset question text and hide result text
+  document.getElementById('question').textContent = questions[currentQuestionIndex].question;
+  document.getElementById('result-text').textContent = '';
+  
+  // Make the "Next" button visible again
+  document.getElementById('next-button').style.display = 'inline-block';
+  
+  // Ensure the reload button remains visible
+  document.getElementById('reload-button').style.display = 'inline-block';
+}
+
   }
 </script>
-
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const setupDots = (sliderSelector, dotsId) => {
