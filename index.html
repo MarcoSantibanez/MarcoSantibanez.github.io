@@ -1040,11 +1040,16 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
       container.innerHTML = `
         <p id="question">${question.text}</p>
         <div class="choices">
-          <button onclick="checkAnswer('Phishing')">Phishing</button>
-          <button onclick="checkAnswer('Legit')">Legit</button>
+          <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
+    <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
         </div>
         <p id="feedback"></p>
-        <button id="next-btn" onclick="nextQuestion()">Next</button>
+         <button id="next-button" onclick="nextQuestion()">
+      <i class="fa-solid fa-forward-step"></i>
+    </button>
+        <button id="reload-button" onclick="reloadQuiz()">
+      <i class="fa-solid fa-repeat"></i>
+    </button> 
       `;
     }
   }
