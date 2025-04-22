@@ -452,6 +452,66 @@ footer p, footer a {
   box-shadow: 0 0 20px var(--green-glow), 0 0 10px var(--green-neon);
   animation: pulseHighlight 3s ease-in-out infinite;
 }
+.side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--dark-panel); /* Dark panel background to match theme */
+  overflow-x: hidden;
+  transition: 0.3s ease;
+  z-index: 1000;
+  padding-top: 60px; /* Space from the top */
+}
+
+.side-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: var(--green-neon); /* Neon green links */
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+}
+
+.side-menu ul li a:hover {
+  background-color: var(--green-neon); /* Hover effect with background */
+  color: #0b0f17; /* Dark text color when hovered */
+}
+
+/* Menu Toggle (Hamburger) Button */
+.menu-toggle {
+  font-size: 30px;
+  color: var(--text-light); /* Light color for visibility */
+  background-color: var(--dark-background); /* Match theme */
+  padding: 1rem;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure button is above the side menu */
+}
+
+/* Menu open state */
+.side-menu.open {
+  width: 250px; /* Expand the menu */
+}
+
+body.menu-open {
+  margin-left: 250px; /* Move content to the right when menu is open */
+}
+
+    
 @keyframes pulseHighlight {
   0%, 100% {
     box-shadow: 0 0 15px var(--green-glow), 0 0 8px var(--green-neon);
@@ -516,42 +576,39 @@ footer p, footer a {
   </style>
 </head>
 <body>
+<div class="menu-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+  
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="#qualifications">About Marco</a></li>
+      <li><a href="#carousel">Project Cards</a></li>
+      <li><a href="#project-instructions">Comprehensive view of projects</a></li>
+      <li><a href="#certifications-carousel">Certifications</a></li>
+      <li><a href="#phishing-quiz">Quick Phishing Quiz</a></li>
+      <li><a href="#contact-section">Contact Me</a></li>
+    </ul>
+  </div>
+  
   <header>
     <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" alt="Marco Santibanez" />
     <h1>Marco Santibanez</h1>
     <p>Certified Cybersecurity Analyst passionate about helping organizations stay secure, resilient, and ahead of evolving digital threats.</p>
   </header>
 
-  <section class="qualifications">
+  <section class="qualifications" id="qualifications">
     <h2>Cybersecurity Credentials & Goals</h2>
     <p>🔐 CompTIA Security+ Certified</p>
     <p>🔍 Google Cybersecurity Certificate</p>
     <p>📌 Open to entry-level and junior cybersecurity roles in SOCs, analyst teams, and incident response units</p>
     <p>Why Marco❔ “He applies technical precision and a cybersecurity-first mindset to solve complex problems, strengthen digital defenses, and translate awareness into measurable action.”</p> 
-    <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p><br><br><br>
-<section class="phishing-quiz">
-  <h2>Phishing Awareness Quiz</h2>
-  <div id="quiz-container">
-    <p id="question">What is this email trying to do?</p>
-    <div class="choices">
-      <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
-      <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
-    </div>
-    <div class="button-row">
-      <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
-      <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
-    </div>
-    <div class="result-text" id="result-text"></div>
-  </div>
-</section>
-
-
+    <p>📫 Let's connect on <a href="https://www.linkedin.com/in/marcosantibanez3/" target="_blank" style="color: var(--molten-gold); text-decoration: underline;">LinkedIn</a></p>
   </section>
 
 
-
   <!-- First Carousel -->
-  <section class="carousel">
+  <section class="carousel" id="carousel">
     <div class="carousel__slider">
 
     <div class="project-card">
@@ -926,7 +983,7 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
   </section>
 
   <!-- Second Carousel: Certifications Gallery -->
-  <section class="certifications-carousel">
+  <section class="certifications-carousel"id="certifications-carousel">
     <h2 style="text-align:center; color: var(--molten-gold); font-size: 1.8rem; margin-top: 2rem;">Certifications Gallery</h2>
     <div class="certifications__slider">
       <div class="cert-card">
@@ -997,6 +1054,38 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
       box-shadow: 0 0 20px var(--green-glow);
     }
   </style>
+
+<section class="phishing-quiz" id="phishing-quiz">
+  <h2>Phishing Awareness Quiz</h2>
+  <div id="quiz-container">
+    <p id="question">What is this email trying to do?</p>
+    <div class="choices">
+      <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
+      <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
+    </div>
+    <div class="button-row">
+      <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
+      <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
+    </div>
+    <div class="result-text" id="result-text"></div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const body = document.body;
+
+  if (menu.classList.contains("open")) {
+    menu.classList.remove("open");
+    body.classList.remove("menu-open");
+  } else {
+    menu.classList.add("open");
+    body.classList.add("menu-open");
+  }
+}
+</script>
+  
 <script>
  let currentQuestionIndex = 0;
     let score = 0;
@@ -1109,7 +1198,7 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     });
   </script>
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact-section" >
     <h2>Contact Marco</h2>
     <p>Reach out to discuss job opportunities, collaborations, cyber awareness training, or cybersecurity consulting.</p>
     <br><br>
