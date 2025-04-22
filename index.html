@@ -284,245 +284,128 @@
       background-color: var(--green-neon);
     }
 
-/* Styling the overall phishing quiz section */
+
 .phishing-quiz {
-  background-color: var(--dark-panel); /* Dark background to match your theme */
-  padding: 3rem 2rem; /* Add padding for spacing */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 0 20px var(--border-glow); /* Neon glow effect around the container */
-  text-align: center; /* Center-align text */
-  max-width: 600px; /* Limit width for better presentation */
-  margin: 2rem auto; /* Center the quiz container */
+  background-color: var(--dark-panel);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--border-glow);
+  text-align: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  font-size: 0.9rem;
 }
 
+/* Title */
 .phishing-quiz h2 {
-  color: var(--green-neon); /* Neon green text for the title */
-  font-size: 2rem;
+  color: var(--green-neon);
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 2rem; /* Space below the title */
+  margin-bottom: 0.75rem;
 }
 
+/* Quiz Body */
 #quiz-container {
-  font-family: 'Orbitron', sans-serif; /* Same font as the rest of your page */
-  color: var(--text-light); /* Light text for readability */
-  background: var(--dark-panel); /* Ensure background stays consistent */
-  padding: 2rem;
-  border-radius: 12px; /* Rounded corners for the content area */
-  box-shadow: 0 0 15px var(--border-glow); /* Add glowing border effect */
-  position: relative; /* Ensures the z-index works properly */
+  font-family: 'Orbitron', sans-serif;
+  color: var(--text-light);
+  background: var(--dark-panel);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--border-glow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
+/* Question Text */
 #question {
-  font-size: 1.25rem; /* Larger font size for visibility */
-  margin-bottom: 1.5rem; /* Space between question and choices */
-  color: var(--text-light); /* Light text color */
+  font-size: 1.15rem;
+  color: var(--text-light);
+  margin: 0 auto;
+}
+
+/* Answer Buttons */
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
 .choices button {
-  background: var(--green-neon); /* Neon green background */
+  background: var(--green-neon);
   border: none;
-  padding: 1rem 2rem; /* Button padding */
-  border-radius: 8px; /* Rounded button corners */
-  color: #0b0f17; /* Dark text on the neon green background */
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0.5rem; /* Space between buttons */
-  cursor: pointer; /* Pointer cursor for buttons */
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); /* Subtle glowing effect on buttons */
-  transition: all 0.3s ease; /* Smooth transition on hover */
-}
-
-.choices button:hover {
-  background: #0b0f17; /* Darker background on hover */
-  color: var(--green-neon); /* Neon green text on hover */
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Enhanced glow effect on hover */
-}
-
-.choices button:focus,
-.choices button:active {
-  transform: scale(1.05); /* Slight zoom effect when button is active */
-  outline: none; /* Remove focus outline */
-}
-
-.result-text {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--text-light);
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
-}
-
-/* Styling for reload button */
-#reload-button {
-  background: var(--green-neon); /* Different color for the reload button */
-  border: none;
-  padding: 1rem 2rem; /* Same padding as the other buttons */
-  border-radius: 8px;
-  color: #0b0f17; /* Dark text on the golden background */
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1.5rem; /* Space between buttons */
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); /* Glow effect */
-  transition: all 0.3s ease; /* Smooth transition */
-}
-
-#reload-button:hover {
-  background: #0b0f17; /* Darker background on hover */
-  color: var(--green-neon); /* Gold text on hover */
-  box-shadow: 0 0 25px rgba(255, 204, 51, 0.5); /* Enhanced glow */
-}
-
-#reload-button:focus,
-#reload-button:active {
-  transform: scale(1.05); /* Slight zoom effect */
-  outline: none; /* Remove outline */
-}
-
-/* Styling for next button */
-#next-button {
-  background: var(--green-neon); 
-  border: none;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.4rem;
   border-radius: 8px;
   color: #0b0f17;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: bold;
-  margin-top: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
   transition: all 0.3s ease;
-}
-
-#next-button:hover {
-    background: #0b0f17; /* Darker background on hover */
-  color: var(--green-neon); /* Gold text on hover */
-  box-shadow: 0 0 25px rgba(255, 204, 51, 0.5); /* Enhanced glow */
-}
-
-.phishing-quiz h2 {
-  color: var(--green-neon); /* Neon green text for the title */
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem; /* Space below the title */
-}
-
-#quiz-container {
-  font-family: 'Orbitron', sans-serif; /* Same font as the rest of your page */
-  color: var(--text-light); /* Light text for readability */
-  background: var(--dark-panel); /* Ensure background stays consistent */
-  padding: 2rem;
-  border-radius: 12px; /* Rounded corners for the content area */
-  box-shadow: 0 0 15px var(--border-glow); /* Add glowing border effect */
-  position: relative; /* Ensures the z-index works properly */
-}
-
-#question {
-  font-size: 1.25rem; /* Larger font size for visibility */
-  margin-bottom: 1.5rem; /* Space between question and choices */
-  color: var(--text-light); /* Light text color */
-}
-
-.choices button {
-  background: var(--green-neon); /* Neon green background */
-  border: none;
-  padding: 1rem 2rem; /* Button padding */
-  border-radius: 8px; /* Rounded button corners */
-  color: #0b0f17; /* Dark text on the neon green background */
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0.5rem; /* Space between buttons */
-  cursor: pointer; /* Pointer cursor for buttons */
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); /* Subtle glowing effect on buttons */
-  transition: all 0.3s ease; /* Smooth transition on hover */
+  min-width: 120px;
 }
 
 .choices button:hover {
-  background: #0b0f17; /* Darker background on hover */
-  color: var(--green-neon); /* Neon green text on hover */
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Enhanced glow effect on hover */
+  background: #0b0f17;
+  color: var(--green-neon);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 
 .choices button:focus,
 .choices button:active {
-  transform: scale(1.05); /* Slight zoom effect when button is active */
-  outline: none; /* Remove focus outline */
+  transform: scale(1.05);
+  outline: none;
 }
 
+/* Feedback */
 .result-text {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: bold;
   color: var(--text-light);
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+  animation: fadeIn 0.5s ease-in-out;
+  margin-top: 0.75rem;
 }
 
-/* Styling for reload button */
-#reload-button {
-  background: var(--green-neon); /* Different color for the reload button */
-  border: none;
-  padding: 1rem 2rem; /* Same padding as the other buttons */
-  border-radius: 8px;
-  color: #0b0f17; /* Dark text on the golden background */
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1.5rem; /* Space between buttons */
-  cursor: pointer;
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Glow effect */
-  transition: all 0.3s ease; /* Smooth transition */
-}
 
-#reload-button:hover {
-  background: #0b0f17; /* Darker background on hover */
-  color: var(--green-neon); /* Gold text on hover */
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Enhanced glow */
-}
 
-#reload-button:focus,
-#reload-button:active {
-  transform: scale(1.05); /* Slight zoom effect */
-  outline: none; /* Remove outline */
-}
-
-/* Styling for next button */
+#reload-button,
 #next-button {
   background: var(--green-neon);
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.3rem 1rem;
   border-radius: 8px;
   color: #0b0f17;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  margin-top: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
   transition: all 0.3s ease;
+  min-width: 100px; /* Make buttons smaller */
 }
 
+#reload-button:hover,
 #next-button:hover {
   background: #0b0f17;
   color: var(--green-neon);
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
-}
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
 }
 
+#reload-button:focus,
 #next-button:focus,
+#reload-button:active,
 #next-button:active {
   transform: scale(1.05);
   outline: none;
 }
 
-/* Adjust layout of buttons in button-row */
 .button-row {
-  margin-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  position: relative; /* Ensure buttons appear above content */
-  z-index: 10; /* Ensure buttons appear above content */
+  margin-top: 1rem;
 }
 
 
