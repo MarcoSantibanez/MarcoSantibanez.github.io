@@ -1070,25 +1070,18 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
   };
 
   function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-      renderQuestion(document.getElementById("quiz-container"));
-    } else {
-      alert(`Quiz complete! Your score: ${score}/${questions.length}`);
-    }
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    renderQuestion(document.getElementById("quiz-container"));
+  } else {
+    alert(`Quiz complete! Your score: ${score}/${questions.length}`);
+  }
+}
+
 function reloadQuiz() {
-  // Reset the quiz state
   currentQuestionIndex = 0;
-  
-  // Reset question text and hide result text
-  document.getElementById('question').textContent = questions[currentQuestionIndex].question;
-  document.getElementById('result-text').textContent = '';
-  
-  // Make the "Next" button visible again
-  document.getElementById('next-button').style.display = 'inline-block';
-  
-  // Ensure the reload button remains visible
-  document.getElementById('reload-button').style.display = 'inline-block';
+  score = 0;
+  renderQuestion(document.getElementById("quiz-container")); // This redraws the entire question layout
 }
 
   }
