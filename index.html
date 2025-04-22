@@ -1070,20 +1070,15 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
   };
 
   function nextQuestion() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    renderQuestion(document.getElementById("quiz-container"));
-  } else {
-    alert(`Quiz complete! Your score: ${score}/${questions.length}`);
-  }
-}
-
-// ✅ Fixes reload logic
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      renderQuestion(document.getElementById("quiz-container"));
+    } else {
+      alert(`Quiz complete! Your score: ${score}/${questions.length}`);
+    }
 function reloadQuiz() {
+  // Reset the quiz state
   currentQuestionIndex = 0;
-  score = 0;
-  renderQuestion(document.getElementById("quiz-container"));
-}
   
   // Reset question text and hide result text
   document.getElementById('question').textContent = questions[currentQuestionIndex].question;
