@@ -1004,95 +1004,88 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     }
   </style>
 
-  <script>
-  const questions = [
-    { text: "You receive an email from your bank asking you to urgently verify your account by clicking a link. The URL looks suspicious.", answer: "Phishing" },
-    { text: "An email from your coworker includes an invoice PDF and matches their email and writing style.", answer: "Legit" },
-    { text: "An unexpected email says you’ve won a free iPhone and asks for your shipping info.", answer: "Phishing" },
-    { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" },
-    { text: "An email claims your Netflix account is suspended and asks you to log in via a link, but the URL is 'netflix-security-check.com'.", answer: "Phishing" },
-    { text: "You receive an email from IT support asking you to install a software update. The email is from 'support@yourcompany.com'.", answer: "Legit" },
-    { text: "A message from PayPal says there's suspicious activity on your account and asks you to confirm personal details through a link.", answer: "Phishing" },
-    { text: "You get a password reset email for an app you use, but you didn’t request it. The sender is 'no-reply@theapp.com'.", answer: "Legit" },
-    { text: "An email offers a free gift card if you complete a quick survey. It’s from a sketchy-looking domain like 'giftznow.co'.", answer: "Phishing" },
-    { text: "You receive an email from HR about upcoming benefits enrollment with a link to the internal portal.", answer: "Legit" },
-    { text: "An email has a Microsoft logo and says your OneDrive is almost full. It asks you to log in through a shortened URL.", answer: "Phishing" },
-    { text: "Your email provider alerts you that your mailbox is over its quota, and the link points to 'mail-login-update.com'.", answer: "Phishing" },
-    { text: "You receive a confirmation email after signing up for a newsletter. It contains a 'confirm subscription' button.", answer: "Legit" },
-    { text: "An email claims to be from Amazon but has typos, a weird sender like 'amazn@deals-now.ru', and a sketchy link.", answer: "Phishing" }
-  ];
+ let currentQuestionIndex = 0;
+    let score = 0;
 
-  let currentQuestionIndex = 0;
-  let score = 0;
+    // Define the questions
+    const questions = [
+      { text: "You receive an email from your bank asking you to urgently verify your account by clicking a link. The URL looks suspicious.", answer: "Phishing" },
+      { text: "An email from your coworker includes an invoice PDF and matches their email and writing style.", answer: "Legit" },
+      { text: "An unexpected email says you’ve won a free iPhone and asks for your shipping info.", answer: "Phishing" },
+      { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" },
+      { text: "An email claims your Netflix account is suspended and asks you to log in via a link, but the URL is 'netflix-security-check.com'.", answer: "Phishing" },
+      { text: "You receive an email from IT support asking you to install a software update. The email is from 'support@yourcompany.com'.", answer: "Legit" },
+      { text: "A message from PayPal says there's suspicious activity on your account and asks you to confirm personal details through a link.", answer: "Phishing" },
+      { text: "You get a password reset email for an app you use, but you didn’t request it. The sender is 'no-reply@theapp.com'.", answer: "Legit" },
+      { text: "An email offers a free gift card if you complete a quick survey. It’s from a sketchy-looking domain like 'giftznow.co'.", answer: "Phishing" },
+      { text: "You receive an email from HR about upcoming benefits enrollment with a link to the internal portal.", answer: "Legit" },
+      { text: "An email has a Microsoft logo and says your OneDrive is almost full. It asks you to log in through a shortened URL.", answer: "Phishing" },
+      { text: "Your email provider alerts you that your mailbox is over its quota, and the link points to 'mail-login-update.com'.", answer: "Phishing" },
+      { text: "You receive a confirmation email after signing up for a newsletter. It contains a 'confirm subscription' button.", answer: "Legit" },
+      { text: "An email claims to be from Amazon but has typos, a weird sender like 'amazn@deals-now.ru', and a sketchy link.", answer: "Phishing" }
+    ];
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("quiz-container"); // Make sure the container ID matches
-    if (!container) {
-      console.error("Quiz container not found!");
-      return;
-    }
-    renderQuestion(container);
-  });
-
-  function renderQuestion(container) {
-    if (currentQuestionIndex < questions.length) {
-      const question = questions[currentQuestionIndex];
-      container.innerHTML = `
-        <p id="question">${question.text}</p>
-        <div class="choices">
-          <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
-    <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
-        </div>
-        <p id="feedback"></p>
-         <button id="next-button" onclick="nextQuestion()">
-      <i class="fa-solid fa-forward-step"></i>
-    </button>
-        <button id="reload-button" onclick="reloadQuiz()">
-      <i class="fa-solid fa-repeat"></i>
-    </button> 
-      `;
-    }
-  }
-
-  window.checkAnswer = function (selectedAnswer) {
-    const correctAnswer = questions[currentQuestionIndex].answer;
-    const feedback = document.getElementById('feedback');
-    if (selectedAnswer === correctAnswer) {
-      score++;
-      feedback.textContent = "Correct!";
-    } else {
-      feedback.textContent = "Incorrect!";
+    // Function to render the question and choices
+    function renderQuestion(container) {
+      if (currentQuestionIndex < questions.length) {
+        const question = questions[currentQuestionIndex];
+        container.innerHTML = `
+          <p id="question">${question.text}</p>
+          <div class="choices">
+            <button onclick="checkAnswer('Phishing')">🚨 Phishing</button>
+            <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
+          </div>
+          <p id="feedback"></p>
+          <button id="next-button" onclick="nextQuestion()">Next</button>
+          <button id="reload-button" onclick="reloadQuiz()">Reload</button>
+        `;
+      }
     }
 
-    // Disable buttons after selection
-    const buttons = document.querySelectorAll(".choices button");
-    buttons.forEach(button => button.disabled = true);
-  };
+    // Function to check the selected answer
+    window.checkAnswer = function (selectedAnswer) {
+      const correctAnswer = questions[currentQuestionIndex].answer;
+      const feedback = document.getElementById('feedback');
+      if (selectedAnswer === correctAnswer) {
+        score++;
+        feedback.textContent = "Correct!";
+      } else {
+        feedback.textContent = "Incorrect!";
+      }
 
-  function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+      // Disable buttons after selection
+      const buttons = document.querySelectorAll(".choices button");
+      buttons.forEach(button => button.disabled = true);
+    };
+
+    // Function to move to the next question
+    window.nextQuestion = function () {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        renderQuestion(document.getElementById("quiz-container"));
+      } else {
+        alert(`Quiz complete! Your score: ${score}/${questions.length}`);
+      }
+    };
+
+    // Function to reset the quiz
+    window.reloadQuiz = function () {
+      currentQuestionIndex = 0;
+      score = 0;
       renderQuestion(document.getElementById("quiz-container"));
-    } else {
-      alert(`Quiz complete! Your score: ${score}/${questions.length}`);
-    }
-function reloadQuiz() {
-  // Reset the quiz state
-  currentQuestionIndex = 0;
-  
-  // Reset question text and hide result text
-  document.getElementById('question').textContent = questions[currentQuestionIndex].question;
-  document.getElementById('result-text').textContent = '';
-  
-  // Make the "Next" button visible again
-  document.getElementById('next-button').style.display = 'inline-block';
-  
-  // Ensure the reload button remains visible
-  document.getElementById('reload-button').style.display = 'inline-block';
-}
+    };
 
-  }
-</script>
+    // Initialize the quiz when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById("quiz-container");
+      if (!container) {
+        console.error("Quiz container not found!");
+        return;
+      }
+      renderQuestion(container);
+    });
+  </script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const setupDots = (sliderSelector, dotsId) => {
