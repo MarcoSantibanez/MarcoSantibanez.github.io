@@ -354,7 +354,7 @@
 
 /* Styling for reload button */
 #reload-button {
-  background: var(--molten-gold); /* Different color for the reload button */
+  background: var(--green-neon); /* Different color for the reload button */
   border: none;
   padding: 1rem 2rem; /* Same padding as the other buttons */
   border-radius: 8px;
@@ -369,7 +369,7 @@
 
 #reload-button:hover {
   background: #0b0f17; /* Darker background on hover */
-  color: var(--molten-gold); /* Gold text on hover */
+  color: var(--green-neon); /* Gold text on hover */
   box-shadow: 0 0 25px rgba(255, 204, 51, 0.5); /* Enhanced glow */
 }
 
@@ -381,7 +381,7 @@
 
 /* Styling for next button */
 #next-button {
-  background: var(--blue-neon, #00f); /* Fallback blue if var isn't defined */
+  background: var(--green-neon); /* Fallback blue if var isn't defined */
   border: none;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -396,7 +396,121 @@
 
 #next-button:hover {
   background: #0b0f17;
-  color: var(--blue-neon, #00f);
+  color: var(.phishing-quiz {
+  background-color: var(--dark-panel); /* Dark background to match your theme */
+  padding: 3rem 2rem; /* Add padding for spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 0 20px var(--border-glow); /* Neon glow effect around the container */
+  text-align: center; /* Center-align text */
+  max-width: 600px; /* Limit width for better presentation */
+  margin: 2rem auto; /* Center the quiz container */
+}
+
+.phishing-quiz h2 {
+  color: var(--green-neon); /* Neon green text for the title */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem; /* Space below the title */
+}
+
+#quiz-container {
+  font-family: 'Orbitron', sans-serif; /* Same font as the rest of your page */
+  color: var(--text-light); /* Light text for readability */
+  background: var(--dark-panel); /* Ensure background stays consistent */
+  padding: 2rem;
+  border-radius: 12px; /* Rounded corners for the content area */
+  box-shadow: 0 0 15px var(--border-glow); /* Add glowing border effect */
+  position: relative; /* Ensures the z-index works properly */
+}
+
+#question {
+  font-size: 1.25rem; /* Larger font size for visibility */
+  margin-bottom: 1.5rem; /* Space between question and choices */
+  color: var(--text-light); /* Light text color */
+}
+
+.choices button {
+  background: var(--green-neon); /* Neon green background */
+  border: none;
+  padding: 1rem 2rem; /* Button padding */
+  border-radius: 8px; /* Rounded button corners */
+  color: #0b0f17; /* Dark text on the neon green background */
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem; /* Space between buttons */
+  cursor: pointer; /* Pointer cursor for buttons */
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); /* Subtle glowing effect on buttons */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+}
+
+.choices button:hover {
+  background: #0b0f17; /* Darker background on hover */
+  color: var(--green-neon); /* Neon green text on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5); /* Enhanced glow effect on hover */
+}
+
+.choices button:focus,
+.choices button:active {
+  transform: scale(1.05); /* Slight zoom effect when button is active */
+  outline: none; /* Remove focus outline */
+}
+
+.result-text {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
+}
+
+/* Styling for reload button */
+#reload-button {
+  background: var(--green-neon); /* Different color for the reload button */
+  border: none;
+  padding: 1rem 2rem; /* Same padding as the other buttons */
+  border-radius: 8px;
+  color: #0b0f17; /* Dark text on the golden background */
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1.5rem; /* Space between buttons */
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 204, 51, 0.3); /* Glow effect */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+#reload-button:hover {
+  background: #0b0f17; /* Darker background on hover */
+  color: var(--green-neon); /* Gold text on hover */
+  box-shadow: 0 0 25px rgba(255, 204, 51, 0.5); /* Enhanced glow */
+}
+
+#reload-button:focus,
+#reload-button:active {
+  transform: scale(1.05); /* Slight zoom effect */
+  outline: none; /* Remove outline */
+}
+
+/* Styling for next button */
+#next-button {
+  background: var(--green-neon); /* Fallback blue if var isn't defined */
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: #0b0f17;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+#next-button:hover {
+  background: #0b0f17;
+  color: var(--green-neon);
+  box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
+}, #00f);
   box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
 }
 
@@ -1036,8 +1150,8 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
             <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
           </div>
           <p id="feedback"></p>
-          <button id="next-button" onclick="nextQuestion()">Next</button>
-          <button id="reload-button" onclick="reloadQuiz()">Reload</button>
+          <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
+          <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button>
         `;
       }
     }
