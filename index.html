@@ -510,6 +510,25 @@ footer p, footer a {
 body.menu-open {
   margin-left: 250px; /* Move content to the right when menu is open */
 }
+.glow-effect {
+  animation: glow 1.5s ease-in-out;
+}
+
+.glow-effect {
+  animation: pulseHighlight 1.5s ease-in-out;
+}
+    @keyframes glow {
+  0% {
+    box-shadow: 0 0 0px var(--green-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--green-neon);
+  }
+  100% {
+    box-shadow: 0 0 0px var(--green-glow);
+  }
+}
+
 
     
 @keyframes pulseHighlight {
@@ -978,7 +997,7 @@ body.menu-open {
   </section>
 
       <section>
-    <p class="project-instructions"> For a comprehensive view of each project, including technical documentation and context, please
+    <p class="project-instructions" id: "project-instructions"> For a comprehensive view of each project, including technical documentation and context, please
 click the corresponding image to access it on GitHub or LinkedIn </p>
   </section>
 
@@ -1083,7 +1102,13 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     menu.classList.add("open");
     body.classList.add("menu-open");
   }
-}
+targetSection.classList.add("glow-effect");
+
+    // Remove glow after 1.5 seconds
+    setTimeout(() => {
+      targetSection.classList.remove("glow-effect");
+    }, 1500);
+  }
 </script>
   
 <script>
