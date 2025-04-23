@@ -1109,31 +1109,38 @@ function toggleMenu() {
   }
 }
 
-// Close the menu and apply glow after clicking a nav link
+// Close the menu, scroll, and glow on click
 document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); //preventsMobileJump
-    // Get the href target (e.g., #carousel)
+    e.preventDefault();
+
     const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
 
-    // Close the menu after a short delay
-    setTimeout(() => {
-      document.getElementById('sideMenu').classList.remove('open');
-      document.body.classList.remove('menu-open');
-      document.querySelector('.menu-toggle').setAttribute("aria-expanded", "false");
-    }, 300);
-
-    // Trigger glow on the section
     if (targetSection) {
+      // Optional: tweak offset if needed
+      const yOffset = -10; 
+      const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
+
+      // Add glow effect
       targetSection.classList.add("alt-effect");
       setTimeout(() => {
         targetSection.classList.remove("alt-effect");
       }, 1500);
     }
+
+    // Close menu after short delay
+    setTimeout(() => {
+      document.getElementById('sideMenu').classList.remove('open');
+      document.body.classList.remove('menu-open');
+      document.querySelector('.menu-toggle').setAttribute("aria-expanded", "false");
+    }, 300);
   });
 });
 </script>
+
   
 <script>
  let currentQuestionIndex = 0;
