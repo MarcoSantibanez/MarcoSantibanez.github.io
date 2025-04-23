@@ -1266,10 +1266,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hide privacy box when clicking outside, but respect the flag
   document.addEventListener("click", function (e) {
-    // Only hide privacy policy if the click is outside the policy section AND it's not triggered by clicking the link
     const clickedInsidePrivacy = privacyText.contains(e.target);
     const clickedPrivacyLink = privacyLink.contains(e.target);
 
+    // Only hide privacy policy if the click is outside the privacy section AND it's not triggered by clicking the link
     if (!clickedInsidePrivacy && !clickedPrivacyLink && !privacyFlag) {
       privacyText.style.display = "none";
       localStorage.setItem("privacy-policy-visible", "false");
