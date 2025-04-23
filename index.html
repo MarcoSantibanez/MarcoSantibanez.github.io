@@ -531,6 +531,17 @@
 .collection-g4 a:hover {
   color: #00ffaa;
 }
+    #close-privacy {
+  margin-top: 1rem;
+  background-color: var(--green-glow);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 
 
     
@@ -1504,8 +1515,28 @@ document.addEventListener("DOMContentLoaded", function () {
     <h6>Privacy Policy</h6>
     <p>We use cookies and similar tracking technologies to improve your browsing experience. Specifically, we use Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
     <p>By continuing to use this website, you consent to the cookie usage.</p>
+    <button id="close-privacy">Close</button> 
   </div>
 </section>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const closeBtn = document.getElementById("close-privacy");
+  const privacyBox = document.getElementById("collection-g4");
+
+  closeBtn.addEventListener("click", function () {
+    privacyBox.style.display = "none";
+    // Optionally store in localStorage to remember the user's choice
+    localStorage.setItem("privacy-dismissed", "true");
+  });
+
+  // Optional: Check if previously dismissed
+  if (localStorage.getItem("privacy-dismissed") === "true") {
+    privacyBox.style.display = "none";
+  }
+});
+</script>
+
   
     <footer><p>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.</p>
