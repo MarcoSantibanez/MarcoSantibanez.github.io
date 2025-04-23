@@ -1190,6 +1190,8 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 </section>
 
 <script>
+let privacyFlag = false;  // Flag to track if Privacy Policy was opened by the user
+
 function toggleMenu() {
   const menu = document.getElementById("sideMenu");
   const body = document.body;
@@ -1217,7 +1219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     privacyText.style.display = "block";
   }
 
-  // Handle regular menu links (except Privacy)
+  // Handle regular menu links (EXCEPT privacy)
   document.querySelectorAll('#sideMenu a:not(#menu-privacy-policy)').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -1234,6 +1236,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => targetSection.classList.remove("alt-effect"), 1500);
       }
 
+      // Close menu
       setTimeout(() => {
         document.getElementById("sideMenu").classList.remove("open");
         document.body.classList.remove("menu-open");
@@ -1242,35 +1245,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle Privacy Policy menu link
+  // Handle Privacy Policy click
   privacyLink.addEventListener("click", function (e) {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Prevents closing due to body click
 
-    // Show section
+    privacyFlag = true;  // Set flag to true when privacy policy link is clicked
     privacyText.style.display = "block";
     localStorage.setItem("privacy-policy-visible", "true");
 
-    // Scroll to it
     const headerHeight = document.querySelector('header')?.offsetHeight || 0;
     const scrollPos = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     window.scrollTo({ top: scrollPos, behavior: 'smooth' });
 
-    // Close menu
+    // Close menu manually
     document.getElementById("sideMenu").classList.remove("open");
     document.body.classList.remove("menu-open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
   });
 
-  // Hide when clicking outside
+  // Hide privacy box when clicking outside, but respect the flag
   document.addEventListener("click", function (e) {
+    // Only hide privacy policy if the click is outside the policy section AND it's not triggered by clicking the link
     const clickedInsidePrivacy = privacyText.contains(e.target);
     const clickedPrivacyLink = privacyLink.contains(e.target);
 
-    if (!clickedInsidePrivacy && !clickedPrivacyLink) {
+    if (!clickedInsidePrivacy && !clickedPrivacyLink && !privacyFlag) {
       privacyText.style.display = "none";
       localStorage.setItem("privacy-policy-visible", "false");
     }
+
+    // Reset the flag to false after handling click
+    privacyFlag = false;
   });
 });
 </script>
