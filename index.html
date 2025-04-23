@@ -1112,6 +1112,7 @@ function toggleMenu() {
 // Close the menu and apply glow after clicking a nav link
 document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
+    e.preventDefault(); //preventsMobileJump
     // Get the href target (e.g., #carousel)
     const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
