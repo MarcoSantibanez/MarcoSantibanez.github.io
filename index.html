@@ -1190,45 +1190,90 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 </section>
 
 <script>
-function togglePrivacyPolicy() {
-  const privacyText = document.getElementById("privacy-policy-text");
-  const isVisible = privacyText.style.display === "block";
-  privacyText.style.display = isVisible ? "none" : "block";
-  localStorage.setItem("privacy-policy-visible", !isVisible);
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  const body = document.body;
+  const toggle = document.querySelector(".menu-toggle");
+
+  const isOpen = menu.classList.contains("open");
+
+  if (isOpen) {
+    menu.classList.remove("open");
+    body.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+  } else {
+    menu.classList.add("open");
+    body.classList.add("menu-open");
+    toggle.setAttribute("aria-expanded", "true");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   const privacyText = document.getElementById("privacy-policy-text");
   const privacyLink = document.getElementById("menu-privacy-policy");
 
-  // Show privacy section if previously visible
-  const visible = localStorage.getItem("privacy-policy-visible") === "true";
-  privacyText.style.display = visible ? "block" : "none";
+  // Restore previous privacy state
+  const isVisible = localStorage.getItem("privacy-policy-visible") === "true";
+  privacyText.style.display = isVisible ? "block" : "none";
 
-  // Toggle visibility when menu item is clicked
+  // Special case: toggle privacy on click
   privacyLink.addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevent body click from immediately hiding it
-    togglePrivacyPolicy();
+    e.preventDefault();
+    e.stopPropagation();
 
-    // Optional: close the menu
+    const isVisibleNow = privacyText.style.display === "block";
+    privacyText.style.display = isVisibleNow ? "none" : "block";
+    localStorage.setItem("privacy-policy-visible", !isVisibleNow);
+
+    // Close menu
     document.getElementById("sideMenu").classList.remove("open");
     document.body.classList.remove("menu-open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
   });
 
-  // Hide if clicking outside the privacy section or menu link
+  // Hide privacy section if clicking outside of it
   document.addEventListener("click", function (e) {
-    const clickedInsidePrivacy = privacyText.contains(e.target);
-    const clickedMenuLink = privacyLink.contains(e.target);
-
-    if (!clickedInsidePrivacy && !clickedMenuLink) {
+    if (
+      !privacyText.contains(e.target) &&
+      !privacyLink.contains(e.target)
+    ) {
       privacyText.style.display = "none";
       localStorage.setItem("privacy-policy-visible", false);
     }
   });
-});
 
+  // Regular menu links scroll and glow
+  document.querySelectorAll('#sideMenu a:not(#menu-privacy-policy)').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const scrollPos = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+        window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+
+        // Glow effect
+        targetSection.classList.add("alt-effect");
+        setTimeout(() => {
+          targetSection.classList.remove("alt-effect");
+        }, 1500);
+      }
+
+      // Close menu after scroll
+      setTimeout(() => {
+        document.getElementById("sideMenu").classList.remove("open");
+        document.body.classList.remove("menu-open");
+        document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+      }, 300);
+    });
+  });
+});
 </script>
+
 
 
   
