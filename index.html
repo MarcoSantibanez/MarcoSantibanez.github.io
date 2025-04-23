@@ -1250,15 +1250,15 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     e.stopPropagation(); // Prevents closing due to body click
 
-    privacyFlag = true;  // Set flag to true when privacy policy link is clicked
+    // Show the Privacy Policy
     privacyText.style.display = "block";
-    localStorage.setItem("privacy-policy-visible", "true");
+    localStorage.setItem("privacy-policy-visible", "true");  // Save visibility state
 
     const headerHeight = document.querySelector('header')?.offsetHeight || 0;
     const scrollPos = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     window.scrollTo({ top: scrollPos, behavior: 'smooth' });
 
-    // Close menu manually
+    // Close the side menu manually
     document.getElementById("sideMenu").classList.remove("open");
     document.body.classList.remove("menu-open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
@@ -1280,7 +1280,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
 
 
   
