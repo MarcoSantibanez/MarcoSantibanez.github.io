@@ -1212,16 +1212,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const privacyText = document.getElementById("privacy-policy-text");
   const privacyLink = document.getElementById("menu-privacy-policy");
 
-  // Restore privacy state on load
-  const isVisible = localStorage.getItem("privacy-policy-visible") === "true";
-  privacyText.style.display = isVisible ? "block" : "none";
+  // Restore visibility from localStorage
+  if (localStorage.getItem("privacy-policy-visible") === "true") {
+    privacyText.style.display = "block";
+  }
 
-  // Handle ALL menu links EXCEPT Privacy
+  // Handle regular menu links (except Privacy)
   document.querySelectorAll('#sideMenu a:not(#menu-privacy-policy)').forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
 
-      const targetId = link.getAttribute('href').substring(1);
+      const targetId = this.getAttribute('href').substring(1);
       const targetSection = document.getElementById(targetId);
       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
 
@@ -1233,7 +1234,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => targetSection.classList.remove("alt-effect"), 1500);
       }
 
-      // Auto-close menu
       setTimeout(() => {
         document.getElementById("sideMenu").classList.remove("open");
         document.body.classList.remove("menu-open");
@@ -1242,34 +1242,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle Privacy Policy link
+  // Handle Privacy Policy menu link
   privacyLink.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    // Scroll to the privacy section
-    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    const targetPosition = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-
-    // Show the section
+    // Show section
     privacyText.style.display = "block";
-    localStorage.setItem("privacy-policy-visible", true);
+    localStorage.setItem("privacy-policy-visible", "true");
 
-    // Close menu manually
+    // Scroll to it
+    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+    const scrollPos = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+
+    // Close menu
     document.getElementById("sideMenu").classList.remove("open");
     document.body.classList.remove("menu-open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
   });
 
-  // Hide privacy box when clicking anywhere else
+  // Hide when clicking outside
   document.addEventListener("click", function (e) {
     const clickedInsidePrivacy = privacyText.contains(e.target);
     const clickedPrivacyLink = privacyLink.contains(e.target);
 
     if (!clickedInsidePrivacy && !clickedPrivacyLink) {
       privacyText.style.display = "none";
-      localStorage.setItem("privacy-policy-visible", false);
+      localStorage.setItem("privacy-policy-visible", "false");
     }
   });
 });
