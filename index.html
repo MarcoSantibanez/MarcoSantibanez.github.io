@@ -500,7 +500,8 @@
 }
 
 /* Positioning the privacy notice at the bottom */
-.collection-g4 {
+/* Default hidden state */
+#collection-g4 {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -511,27 +512,37 @@
   border-radius: 10px;
   box-shadow: 0 0 10px var(--green-neon);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  animation: fadeIn 0.5s ease-in-out;
   text-align: left;
-  z-index: 9999; /* Ensure it's above other content */
-  display: block; /* Hidden by default */
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
 
-.collection-g4 h6 {
+/* Show class makes it visible with fade */
+#collection-g4.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Heading and link styles */
+#collection-g4 h6 {
   color: var(--green-neon);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
-.collection-g4 a {
+#collection-g4 a {
   color: var(--green-glow);
   text-decoration: underline;
 }
 
-.collection-g4 a:hover {
+#collection-g4 a:hover {
   color: #00ffaa;
 }
-    #close-privacy {
+
+/* Close button styles */
+#close-privacy {
   margin-top: 1rem;
   background-color: var(--green-glow);
   color: #fff;
@@ -541,6 +552,7 @@
   border-radius: 5px;
   font-weight: bold;
 }
+
 
 
 
@@ -1237,8 +1249,6 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 </section>
 
 <script>
-let privacyFlag = false;  // Flag to track if Privacy Policy was opened by the user
-
 function toggleMenu() {
   const menu = document.getElementById("sideMenu");
   const body = document.body;
@@ -1257,69 +1267,39 @@ function toggleMenu() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const privacyText = document.getElementById("privacy-policy-text");
-  const privacyLink = document.getElementById("menu-privacy-policy");
-  const closeBtn = document.getElementById("close-privacy-policy");
-
-  // Always show if previously made visible
-  if (localStorage.getItem("privacy-policy-visible") === "true") {
-    privacyText.style.display = "block";
-  }
-
-  // Handle non-privacy menu links
-  document.querySelectorAll('#sideMenu a:not(#menu-privacy-policy)').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-
-      if (targetSection) {
-        const scrollPos = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: scrollPos, behavior: 'smooth' });
-        targetSection.classList.add("alt-effect");
-        setTimeout(() => targetSection.classList.remove("alt-effect"), 1500);
-      }
-
-      // Close menu
-      setTimeout(() => {
-        document.getElementById("sideMenu").classList.remove("open");
-        document.body.classList.remove("menu-open");
-        document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
-      }, 300);
-    });
-  });
-
-  // Handle Privacy Policy link click
-  privacyLink.addEventListener("click", function (e) {
+// Close the menu, scroll, and apply glow effect
+document.querySelectorAll('#sideMenu a').forEach(link => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    e.stopPropagation();
 
-    privacyText.style.display = "block";
-    localStorage.setItem("privacy-policy-visible", "true");
+    // Get the target section's ID
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
 
-    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    const scrollPos = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+    if (targetSection) {
+      // Calculate scroll position with offset
+      const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0; // Adjust header height dynamically
+      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
-    document.getElementById("sideMenu").classList.remove("open");
-    document.body.classList.remove("menu-open");
-    document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+      // Scroll to target position smoothly
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+      // Add glow effect
+      targetSection.classList.add("alt-effect");
+      setTimeout(() => {
+        targetSection.classList.remove("alt-effect");
+      }, 1500);
+    }
+
+    // Close the menu with delay
+    setTimeout(() => {
+      document.getElementById('sideMenu').classList.remove('open');
+      document.body.classList.remove('menu-open');
+      document.querySelector('.menu-toggle').setAttribute("aria-expanded", "false");
+    }, 300);
   });
-
-  // Handle Close button (optional)
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function () {
-      privacyText.style.display = "none";
-      localStorage.setItem("privacy-policy-visible", "false");
-    });
-  }
 });
 </script>
-
-
-
   
 <script>
  let currentQuestionIndex = 0;
@@ -1518,25 +1498,41 @@ document.addEventListener("DOMContentLoaded", function () {
     <button id="close-privacy">Close</button> 
   </div>
 </section>
-
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = document.getElementById("close-privacy");
   const privacyBox = document.getElementById("collection-g4");
+  const privacyLink = document.querySelector('#sideMenu a[href="#collection-g4"]');
 
+  // Show the privacy box when menu item is clicked
+  privacyLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    privacyBox.classList.add("show"); // 
+    localStorage.setItem("privacy-dismissed", "false");
+
+    // Optional scroll to section
+    const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+    const scrollPos = privacyBox.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({ top: scrollPos, behavior: "smooth" });
+
+    // Close side menu
+    document.getElementById("sideMenu").classList.remove("open");
+    document.body.classList.remove("menu-open");
+    document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+  });
+
+  // Hide privacy box when close button is clicked
   closeBtn.addEventListener("click", function () {
-    privacyBox.style.display = "none";
-    // Optionally store in localStorage to remember the user's choice
+    privacyBox.classList.remove("show"); // 
     localStorage.setItem("privacy-dismissed", "true");
   });
 
-  // Optional: Check if previously dismissed
-  if (localStorage.getItem("privacy-dismissed") === "true") {
-    privacyBox.style.display = "none";
+  // Check if it was dismissed before
+  if (localStorage.getItem("privacy-dismissed") !== "true") {
+    privacyBox.classList.add("show"); // 
   }
 });
 </script>
-
   
     <footer><p>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.</p>
