@@ -461,37 +461,6 @@ footer p, footer a {
   animation: pulseHighlight 3s ease-in-out infinite;
 }
 
-    #cookie-consent-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #333;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      z-index: 9999;
-    }
-
-    #cookie-consent-banner button {
-      margin: 5px;
-      padding: 10px;
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
-    #cookie-consent-banner button:hover {
-      background-color: #45a049;
-    }
-
-    #privacy-policy-text {
-      margin-top: 20px;
-      background-color: #f4f4f4;
-      padding: 10px;
-      border-radius: 5px;
-    }
     .side-menu {
   height: 100%;
   width: 0;
@@ -636,12 +605,6 @@ body.menu-open {
 </head>
 <body>
 
-  <div id="cookie-consent-banner" style="display: none;">
-    <div class="cookie-consent-content">
-      <p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies. <a href="javascript:void(0);" id="learn-more">Learn more</a>.</p>
-      <button id="accept-cookies">Accept</button>
-      <button id="reject-cookies">Reject</button>
-    </div>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
   ☰
 </button>
@@ -656,7 +619,7 @@ body.menu-open {
       <li><a href="#contact-section">Contact Me</a></li>
     </ul>
   </div>
-  
+  <section><h1>This site uses GA4 tracking cookies and similar technology to track UX</h1></section>
   <header>
     <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/pfp.jpg" alt="Marco Santibanez" />
     <h1>Marco Santibanez</h1>
@@ -1345,38 +1308,6 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
       background-color: var(--green-neon);
     }
   </style>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const cookieConsent = localStorage.getItem("cookie-consent");
-      if (!cookieConsent) {
-        document.getElementById("cookie-consent-banner").style.display = "block";
-      }
-
-      document.getElementById("accept-cookies").addEventListener("click", function() {
-        localStorage.setItem("cookie-consent", "accepted");
-        gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'analytics_storage': 'granted'
-        });
-        document.getElementById("cookie-consent-banner").style.display = "none";
-      });
-
-      document.getElementById("reject-cookies").addEventListener("click", function() {
-        localStorage.setItem("cookie-consent", "rejected");
-        document.getElementById("cookie-consent-banner").style.display = "none";
-      });
-
-      document.getElementById("learn-more").addEventListener("click", function() {
-        const privacyPolicyText = document.getElementById("privacy-policy-text");
-        privacyPolicyText.style.display = (privacyPolicyText.style.display === "none" || privacyPolicyText.style.display === "") ? "block" : "none";
-      });
-    });
-  </script>
-  <div id="privacy-policy-text" style="display: none;">
-      <h2>Privacy Policy</h2>
-      <p>We use cookies and similar tracking technologies to improve your browsing experience. Specifically, we use Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
-      <p>By continuing to use our website, you consent to our cookie usage.</p>
-    </div>
 
     <footer><p>
     &copy; 2025 Marco Santibanez – Cybersecurity Portfolio. Trust. Innovation. Resilience.</p>
