@@ -1109,20 +1109,22 @@ function toggleMenu() {
   }
 }
 
-// Close the menu, scroll, and glow on click
+// Close the menu, scroll, and apply glow effect
 document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
+    // Get the target section's ID
     const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
 
     if (targetSection) {
-      // Optional: tweak offset if needed
-      const yOffset = -10; 
-      const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      // Calculate scroll position with offset
+      const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0; // Adjust header height dynamically
+      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      // Scroll to target position smoothly
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
 
       // Add glow effect
       targetSection.classList.add("alt-effect");
@@ -1131,7 +1133,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
       }, 1500);
     }
 
-    // Close menu after short delay
+    // Close the menu with delay
     setTimeout(() => {
       document.getElementById('sideMenu').classList.remove('open');
       document.body.classList.remove('menu-open');
@@ -1140,6 +1142,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   });
 });
 </script>
+
 
   
 <script>
