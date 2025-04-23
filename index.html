@@ -498,6 +498,50 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Positioning the privacy notice at the bottom */
+.privacy-policy-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  color: #eee;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--green-neon);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: left;
+  z-index: 9999; /* Ensure it's above other content */
+  display: none; /* Hidden by default */
+}
+
+.privacy-policy-box h6 {
+  color: var(--green-neon);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-policy-box a {
+  color: var(--green-glow);
+  text-decoration: underline;
+}
+
+.privacy-policy-box a:hover {
+  color: #00ffaa;
+}
+
+#close-privacy-policy {
+  margin-top: 1rem;
+  background-color: var(--green-glow);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+    
 footer {
   display: flex;
   justify-content: center;  /* Center horizontally */
@@ -1467,6 +1511,14 @@ document.addEventListener("DOMContentLoaded", function () {
       background-color: var(--green-neon);
     }
   </style>
+
+  <div id="privacy-policy-text" class="privacy-policy-box">
+  <h6>Privacy Policy</h6>
+  <p>We use cookies and similar tracking technologies to improve your browsing experience. Specifically, we use Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+  <p>By continuing to use our website, you consent to our cookie usage.</p>
+  <button id="close-privacy-policy">Close</button>
+</div>
+  
  <div id="privacy-policy-text" style="display: none;">
       <h6>Privacy Policy</h6>
       <p>We use cookies and similar tracking technologies to improve your browsing experience. Specifically, we use Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
