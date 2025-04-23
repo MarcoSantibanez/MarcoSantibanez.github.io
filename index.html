@@ -1257,17 +1257,17 @@ function toggleMenu() {
 document.addEventListener("DOMContentLoaded", function () {
   const privacyText = document.getElementById("privacy-policy-text");
   const privacyLink = document.getElementById("menu-privacy-policy");
+  const closeBtn = document.getElementById("close-privacy-policy");
 
-  // Restore visibility from localStorage
+  // Always show if previously made visible
   if (localStorage.getItem("privacy-policy-visible") === "true") {
     privacyText.style.display = "block";
   }
 
-  // Handle regular menu links (EXCEPT privacy)
+  // Handle non-privacy menu links
   document.querySelectorAll('#sideMenu a:not(#menu-privacy-policy)').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-
       const targetId = this.getAttribute('href').substring(1);
       const targetSection = document.getElementById(targetId);
       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
@@ -1275,7 +1275,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (targetSection) {
         const scrollPos = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
         window.scrollTo({ top: scrollPos, behavior: 'smooth' });
-
         targetSection.classList.add("alt-effect");
         setTimeout(() => targetSection.classList.remove("alt-effect"), 1500);
       }
@@ -1289,44 +1288,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle Privacy Policy click
+  // Handle Privacy Policy link click
   privacyLink.addEventListener("click", function (e) {
     e.preventDefault();
-    e.stopPropagation(); // Prevents closing due to body click
+    e.stopPropagation();
 
-    // Show the Privacy Policy
     privacyText.style.display = "block";
-    localStorage.setItem("privacy-policy-visible", "true");  // Save visibility state
+    localStorage.setItem("privacy-policy-visible", "true");
 
     const headerHeight = document.querySelector('header')?.offsetHeight || 0;
     const scrollPos = privacyText.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     window.scrollTo({ top: scrollPos, behavior: 'smooth' });
 
-    // Close the side menu manually
     document.getElementById("sideMenu").classList.remove("open");
     document.body.classList.remove("menu-open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
-
-    // Set privacyFlag to true to prevent hiding it right away
-    privacyFlag = true;
   });
 
-  // Hide privacy box when clicking outside, but respect the flag
-  document.addEventListener("click", function (e) {
-    const clickedInsidePrivacy = privacyText.contains(e.target);
-    const clickedPrivacyLink = privacyLink.contains(e.target);
-
-    // Only hide privacy policy if the click is outside the privacy section AND it's not triggered by clicking the link
-    if (!clickedInsidePrivacy && !clickedPrivacyLink && !privacyFlag) {
+  // Handle Close button (optional)
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
       privacyText.style.display = "none";
       localStorage.setItem("privacy-policy-visible", "false");
-    }
-
-    // Reset the flag to false after handling click
-    privacyFlag = false;
-  });
+    });
+  }
 });
 </script>
+
 
 
   
