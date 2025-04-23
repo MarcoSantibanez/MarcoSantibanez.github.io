@@ -1247,7 +1247,6 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     <div class="result-text" id="result-text"></div>
   </div>
 </section>
-
 <script>
 function toggleMenu() {
   const menu = document.getElementById("sideMenu");
@@ -1267,7 +1266,7 @@ function toggleMenu() {
   }
 }
 
-// Close the menu, scroll, and apply glow effect
+// Close the menu, scroll, and apply glow effect with smooth scrolling and offset
 document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -1300,6 +1299,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   });
 });
 </script>
+
   
 <script>
  let currentQuestionIndex = 0;
