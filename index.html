@@ -1266,31 +1266,28 @@ function toggleMenu() {
   }
 }
 
-// Close the menu, scroll, and apply glow effect with smooth scrolling and offset
+// Smooth scroll with correct offset + glow effect
 document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Get the target section's ID
     const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
 
     if (targetSection) {
-      // Calculate scroll position with offset
-      const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0; // Adjust header height dynamically
-      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      const offset = document.querySelector('header')?.offsetHeight || 100;
+      const y = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
 
-      // Scroll to target position smoothly
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: y, behavior: 'smooth' });
 
-      // Add glow effect
+      // Glow effect
       targetSection.classList.add("alt-effect");
       setTimeout(() => {
         targetSection.classList.remove("alt-effect");
       }, 1500);
     }
 
-    // Close the menu with delay
+    // Close menu after scroll
     setTimeout(() => {
       document.getElementById('sideMenu').classList.remove('open');
       document.body.classList.remove('menu-open');
