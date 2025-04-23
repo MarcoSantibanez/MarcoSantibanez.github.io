@@ -487,7 +487,17 @@
 #privacy-policy-text a:hover {
   color: #00ffaa;
 }
+#privacy-policy-text {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
 
+#privacy-policy-text.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
 footer {
   display: flex;
   justify-content: center;  /* Center horizontally */
@@ -696,6 +706,7 @@ body.menu-open {
       <li><a href="#certifications-carousel">Certifications</a></li>
       <li><a href="#phishing-quiz">Quick Phishing Quiz</a></li>
       <li><a href="#contact-section">Contact Me</a></li>
+      <li><a href="javascript:void(0);" id="menu-privacy-policy">Privacy Policy</a></li>
     </ul>
   </div>
   <header>
@@ -1179,56 +1190,44 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 </section>
 
 <script>
-function toggleMenu() {
-  const menu = document.getElementById("sideMenu");
-  const body = document.body;
-  const toggle = document.querySelector(".menu-toggle");
-
-  const isOpen = menu.classList.contains("open");
-
-  if (isOpen) {
-    menu.classList.remove("open");
-    body.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
-  } else {
-    menu.classList.add("open");
-    body.classList.add("menu-open");
-    toggle.setAttribute("aria-expanded", "true");
-  }
+function togglePrivacyPolicy() {
+  const privacyText = document.getElementById("privacy-policy-text");
+  const isVisible = privacyText.style.display === "block";
+  privacyText.style.display = isVisible ? "none" : "block";
+  localStorage.setItem("privacy-policy-visible", !isVisible);
 }
 
-// Close the menu, scroll, and apply glow effect
-document.querySelectorAll('#sideMenu a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const privacyText = document.getElementById("privacy-policy-text");
+  const privacyLink = document.getElementById("menu-privacy-policy");
 
-    // Get the target section's ID
-    const targetId = link.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetId);
+  // Show privacy section if previously visible
+  const visible = localStorage.getItem("privacy-policy-visible") === "true";
+  privacyText.style.display = visible ? "block" : "none";
 
-    if (targetSection) {
-      // Calculate scroll position with offset
-      const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0; // Adjust header height dynamically
-      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+  // Toggle visibility when menu item is clicked
+  privacyLink.addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevent body click from immediately hiding it
+    togglePrivacyPolicy();
 
-      // Scroll to target position smoothly
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    // Optional: close the menu
+    document.getElementById("sideMenu").classList.remove("open");
+    document.body.classList.remove("menu-open");
+    document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+  });
 
-      // Add glow effect
-      targetSection.classList.add("alt-effect");
-      setTimeout(() => {
-        targetSection.classList.remove("alt-effect");
-      }, 1500);
+  // Hide if clicking outside the privacy section or menu link
+  document.addEventListener("click", function (e) {
+    const clickedInsidePrivacy = privacyText.contains(e.target);
+    const clickedMenuLink = privacyLink.contains(e.target);
+
+    if (!clickedInsidePrivacy && !clickedMenuLink) {
+      privacyText.style.display = "none";
+      localStorage.setItem("privacy-policy-visible", false);
     }
-
-    // Close the menu with delay
-    setTimeout(() => {
-      document.getElementById('sideMenu').classList.remove('open');
-      document.body.classList.remove('menu-open');
-      document.querySelector('.menu-toggle').setAttribute("aria-expanded", "false");
-    }, 300);
   });
 });
+
 </script>
 
 
