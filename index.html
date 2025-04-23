@@ -514,7 +514,7 @@ body.menu-open {
   animation: glow 1.5s ease-in-out;
 }
 
-.glow-effect {
+.alt-effect {
   animation: pulseHighlight 1.5s ease-in-out;
 }
     @keyframes glow {
@@ -1091,7 +1091,7 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 </section>
 
 <script>
-  function toggleMenu() {
+function toggleMenu() {
   const menu = document.getElementById("sideMenu");
   const body = document.body;
   const toggle = document.querySelector(".menu-toggle");
@@ -1108,22 +1108,30 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     toggle.setAttribute("aria-expanded", "true");
   }
 }
-targetSection.classList.add("glow-effect");
 
-    // Remove glow after 1.5 seconds
-    setTimeout(() => {
-      targetSection.classList.remove("glow-effect");
-    }, 1500);
-    document.querySelectorAll('#sideMenu a').forEach(link => {
+// Close the menu and apply glow after clicking a nav link
+document.querySelectorAll('#sideMenu a').forEach(link => {
   link.addEventListener('click', (e) => {
-    // Wait for scroll and close menu after click
+    // Get the href target (e.g., #carousel)
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    // Close the menu after a short delay
     setTimeout(() => {
       document.getElementById('sideMenu').classList.remove('open');
       document.body.classList.remove('menu-open');
       document.querySelector('.menu-toggle').setAttribute("aria-expanded", "false");
-    }, 300); // let scroll happen first
+    }, 300);
+
+    // Trigger glow on the section
+    if (targetSection) {
+      targetSection.classList.add("alt-effect");
+      setTimeout(() => {
+        targetSection.classList.remove("alt-effect");
+      }, 1500);
+    }
   });
-  }
+});
 </script>
   
 <script>
