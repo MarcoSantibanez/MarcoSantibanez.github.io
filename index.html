@@ -356,6 +356,10 @@
   margin: 0.25rem 0;
 }
 
+    #result-container.hidden {
+  display: none;
+}
+
 /* Question Text */
 #question {
   font-size: 1.15rem;
@@ -1278,7 +1282,6 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
 
 <section class="phishing-quiz" id="phishing-quiz">
   <h2>Phishing Awareness Quiz</h2>
-
   <div id="quiz-container">
     <p id="question">What is this email trying to do?</p>
     <div class="choices">
@@ -1286,23 +1289,20 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
       <button onclick="checkAnswer('Legit')">✅ Legitimate</button>
     </div>
     <div class="button-row">
-      <button id="next-button" onclick="nextQuestion()">
-        <i class="fa-solid fa-forward-step"></i>
-      </button>
-      <button id="reload-button" onclick="reloadQuiz()">
-        <i class="fa-solid fa-repeat"></i>
-      </button>
+      <button id="next-button" onclick="nextQuestion()"><i class="fa-solid fa-forward-step"></i></button>
+      <button id="reload-button" onclick="reloadQuiz()"><i class="fa-solid fa-repeat"></i></button> 
     </div>
   </div>
 
-  <!-- ✅ This is your result container -->
-  <div id="result-container" class="result-card hidden">
+  <!-- Make sure this starts hidden -->
+  <div id="result-container" class="result-card hidden" style="display: none;">
     <h2 id="result-title">Phishing Quiz Complete</h2>
     <p>You scored <strong id="final-score">0 out of 14</strong>.</p>
     <p id="result-message">Some of those caught you off guard — give it another shot!</p>
     <button onclick="restartQuiz()">Try Again</button>
   </div>
 </section>
+  
 <script>
 function toggleMenu() {
   const menu = document.getElementById("sideMenu");
