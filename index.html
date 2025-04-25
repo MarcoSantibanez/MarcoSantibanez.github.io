@@ -379,7 +379,7 @@
   animation: fadeIn 0.5s ease-in-out;
   margin-top: 0.75rem;
 }
-   #results-container {
+   #result-container {
   background-color: var(--dark-panel);
   border: 1px solid var(--line-accent);
   border-radius: 10px;
@@ -395,7 +395,7 @@
   text-align: center;
 }
     
-#results-container span {
+#result-container span {
   color: var(--green-neon);
   font-weight: bold;
 }
@@ -1404,6 +1404,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     <p>You scored <strong>${score} out of ${questions.length}</strong>.</p>
     <p>${getResultMessage(score)}</p>
     <button onclick="restartQuiz()">Try Again</button>
+    resultContainer.classList.add("glow");
   `;
 }
   function getResultMessage(score) {
