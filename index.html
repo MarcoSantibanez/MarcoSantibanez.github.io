@@ -348,6 +348,7 @@
   width: 100%;
   max-width: 800px;       
   text-align: center;
+  animation: pulseHighlight 3s ease-in-out infinite;
 }
     
 #quiz-container p,
@@ -636,8 +637,14 @@ footer p, footer a {
   padding: 1.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 0 20px var(--green-glow), 0 0 10px var(--green-neon);
-  animation: pulseHighlight 3s ease-in-out infinite;
+animation: fadeIn 0.5s ease-in-out; /* Optional fade-in animation */
 }
+
+/* Add pulse and glow effect when the result container is displayed */
+#result-container.pulse {
+  animation: pulseHighlight 3s ease-in-out infinite, glowPulse 1.5s ease-in-out infinite;
+}
+    
 
     .side-menu {
   height: 100%;
@@ -1425,7 +1432,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   quizContainer.style.display = "none";
   resultContainer.style.display = "flex";
   resultContainer.classList.remove("hidden");
-  resultContainer.classList.add("glow");
+  resultContainer.classList.add("pulse");
 
   document.getElementById("final-score").textContent = `${score} out of ${questions.length}`;
   document.getElementById("result-message").textContent = getResultMessage(score);
