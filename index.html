@@ -1403,9 +1403,8 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     <h2>Phishing Quiz Complete</h2>
     <p>You scored <strong>${score} out of ${questions.length}</strong>.</p>
     <p>${getResultMessage(score)}</p>
-    <button onclick="restartQuiz()">Try Again</button>
+    <button onclick="restartQuiz()">Try Again</button> `;
     resultContainer.classList.add("glow");
-  `;
 }
   function getResultMessage(score) {
   if (score === questions.length) return "Perfect! You're a phishing pro. 🛡️";
