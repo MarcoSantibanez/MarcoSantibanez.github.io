@@ -315,18 +315,29 @@
   margin-bottom: 0.75rem;
 }
 
-/* Quiz Body */
-#quiz-container {
+#quiz-container,
+#result-container {
   font-family: 'Orbitron', sans-serif;
   color: var(--text-light);
   background: var(--dark-panel);
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--border-glow);
+  box-shadow: 0 0 10px var(--border-glow);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: auto;       /* No forced height */
+  width: 115%;
+  max-width: 900px;       /* More stretched out */
+  text-align: center;
+}
+    
+#quiz-container p,
+#result-container p {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
 }
 
 /* Question Text */
@@ -379,22 +390,7 @@
   animation: fadeIn 0.5s ease-in-out;
   margin-top: 0.75rem;
 }
-   #result-container {
-  background-color: var(--dark-panel);
-  border: 1px solid var(--line-accent);
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  color: var(--text-light);
-  box-shadow: 0 0 15px var(--border-glow);
-  font-family: 'Orbitron', sans-serif;
-  margin-top: 1.5rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 0.5s ease-in-out, glowPulse 2s ease-in-out infinite;
-  text-align: center;
-}
-    
+#quiz-container span,    
 #result-container span {
   color: var(--green-neon);
   font-weight: bold;
@@ -764,13 +760,15 @@ body.menu-open {
   }
 }
 @keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px var(--border-glow);
-  }
-  50% {
-    box-shadow: 0 0 25px var(--green-neon), 0 0 35px var(--green-neon);
-  }
+  0%   { box-shadow: 0 0 10px var(--border-glow); }
+  50%  { box-shadow: 0 0 20px var(--border-glow); }
+  100% { box-shadow: 0 0 10px var(--border-glow); }
 }
+
+.glow-on-show {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
   
   </style>
 </head>
@@ -1399,6 +1397,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 
   quizContainer.style.display = "none";
   resultContainer.style.display = "block";
+  resultContainer.classList.add("glow-on-show");
 
   resultContainer.innerHTML = `
     <h2>Phishing Quiz Complete</h2>
