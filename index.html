@@ -300,7 +300,7 @@
   background-color: var(--dark-panel);
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--border-glow);
+  box-shadow: 0 0 12px var(--border-glow);
   text-align: center;
   max-width: 800px;
   margin: 2rem auto;
@@ -321,7 +321,7 @@
   background: var(--dark-panel);
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px var(--border-glow);
+  box-shadow: 0 0 12px var(--border-glow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -338,7 +338,7 @@
   background: var(--dark-panel);
   padding: 0.5rem 1rem;
   border-radius: 30px;
-  box-shadow: 0 0 10px var(--green-neon);
+  box-shadow: 0 0 12px var(--border-glow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -836,13 +836,15 @@ body.menu-open {
 </head>
 <body>
   <div id="cookie-consent-banner" style="display: none;">
-    <div class="cookie-consent-content">
-      <p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies. <a href="#collection-g4">Learn More</a></p>
-      <button id="accept-cookies">Accept</button>
-      <button id="reject-cookies">Reject</button>
-    </div>
+  <div class="cookie-consent-content">
+    <p>This Portfolio site uses cookies to improve your experience on our website. By browsing this website, you agree to the use of cookies.
+      <a href="#collection-g4">Learn More</a>
+    </p>
+    <button id="accept-cookies">Accept</button>
+    <button id="reject-cookies">Reject</button>
+  </div>
 </div>
-
+  
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
   ☰
 </button>
@@ -1614,8 +1616,8 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 
   <div id="privacy-policy-text" class="privacy-policy-box">
   <h6>Privacy Policy</h6>
-  <p>We use cookies and similar tracking technologies to improve your browsing experience. Specifically, we use Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
-  <p>By continuing to use our website, you consent to our cookie usage.</p>
+  <p>This portfolio site uses cookies and similar tracking technologies to improve browsing experience. Specifically, it uses Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+  <p>By continuing to use this website, you consent to the cookie usage.</p>
   <button id="close-privacy-policy">Close</button>
 </div>
   
