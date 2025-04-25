@@ -1407,7 +1407,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
       { text: "An unexpected email says you’ve won a free iPhone and asks for your shipping info.", answer: "Phishing" },
       { text: "You get a security alert from your usual login page, and it matches the app design and sender email.", answer: "Legit" },
       { text: "An email claims your Netflix account is suspended and asks you to log in via a link, but the URL is 'netflix-security-check.com'.", answer: "Phishing" },
-      { text: "You receive an email from IT support asking you to install a software update. The email is from 'support@yourcompany.com'.", answer: "Legit" },
+      { text: "You receive an email from IT support asking you to install a software update. The email is from 'support@[thenameofthecompanyyouworkfor].com'.", answer: "Legit" },
       { text: "A message from PayPal says there's suspicious activity on your account and asks you to confirm personal details through a link.", answer: "Phishing" },
       { text: "You get a password reset email for an app you use, but you didn’t request it. The sender is 'no-reply@theapp.com'.", answer: "Legit" },
       { text: "An email offers a free gift card if you complete a quick survey. It’s from a sketchy-looking domain like 'giftznow.co'.", answer: "Phishing" },
@@ -1469,12 +1469,21 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   resultContainer.classList.remove("hidden");
   resultContainer.classList.add("pulse");
 
+  // Update the score and result message
   document.getElementById("final-score").textContent = `${score} out of ${questions.length}`;
   document.getElementById("result-message").textContent = getResultMessage(score);
+
+  // Only show the "Try Again" button if the user didn't get all answers correct
+  if (score < questions.length) {
+    const tryAgainButton = document.createElement("button");
+    tryAgainButton.textContent = "Try Again";
+    tryAgainButton.onclick = restartQuiz;
+    resultContainer.appendChild(tryAgainButton);
+  }
 }
   
   function getResultMessage(score) {
-  if (score === questions.length) return "Perfect! You're a phishing pro. 🛡️";
+  if (score === questions.length) return "Perfect! You're a phishing detection pro. 🛡️";
   if (score >= questions.length / 2) return "Nice work! You spotted most threats.";
   return "Some of those caught you off guard — give it another shot!";
 }
