@@ -456,6 +456,41 @@
   margin-top: 1rem;
 }
 
+#try-again-button {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  background-color: transparent;  /* Transparent background for a neon feel */
+  color: var(--molten-gold);  /* Neon gold text */
+  border: 2px solid var(--molten-gold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--molten-gold), 0 0 20px var(--molten-gold);  /* Neon glow effect */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for "Try Again" button */
+#try-again-button:hover {
+  background-color: var(--molten-gold);  /* Neon background on hover */
+  color: var(--dark-panel);  /* Darker text when hovered */
+  box-shadow: 0 0 25px var(--molten-gold), 0 0 40px var(--molten-gold);  /* Stronger glow */
+}
+
+/* Additional focus and disabled state styles */
+#try-again-button:focus {
+  outline: none;
+  border: 2px solid var(--molten-gold);
+  box-shadow: 0 0 10px var(--molten-gold);
+}
+
+#try-again-button:disabled {
+  background-color: var(--dark-gray);  /* Dimmed background */
+  color: var(--light-gray);  /* Light gray text */
+  border: 2px solid var(--dark-gray);  /* Dimmed border */
+  box-shadow: none;
+  cursor: not-allowed;  /* Change cursor to indicate it's not clickable */
+}
+    
 #cookie-consent-banner {
   position: fixed;
   bottom: 0;
@@ -1306,7 +1341,7 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     <h2 id="result-title">Phishing Quiz Complete</h2>
     <p>You scored <strong id="final-score">0 out of 14</strong>.</p>
     <p id="result-message">Some of those caught you off guard — give it another shot!</p>
-    <button onclick="restartQuiz()">Try Again</button>
+    <button id="try-again-button" onclick="restartQuiz()">Try Again</button>
   </div>
 </section>
   
