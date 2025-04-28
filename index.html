@@ -130,48 +130,45 @@
   }
 
     .carousel {
-      mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
-      display: flex;
-      overflow-x: hidden;
-      scroll-snap-type: x mandatory;
-      padding: 3rem 2rem;
-      background: var(--dark-bg);
-      position: relative;
-      width: 100%;
-      scrollbar-color: var(--green-neon) var(--dark-panel);
-      scrollbar-width: thin;
-    }
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 3rem 2rem;
+  background: var(--dark-bg);
+  position: relative;
+  width: 100%;
+  
+  scrollbar-width: none; /* Firefox */
+}
 
-    .carousel::-webkit-scrollbar {
-      height: 10px;
-    }
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
 
-    .carousel::-webkit-scrollbar-track {
-      background: var(--dark-panel);
-    }
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  background: var(--green-glow);
+  cursor: pointer;
+  transition: background-color 0.3s, width 0.3s;
+}
 
-    .carousel::-webkit-scrollbar-thumb {
-      background-color: var(--green-glow);
-      border-radius: 5px;
-      border: 2px solid var(--dark-panel);
-      animation: pulse-glow 2s infinite;
-    }
+.dot.active {
+  background: var(--green-neon);
+  width: 30px; /* Make it wider when active */
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
 
-    .carousel::-webkit-scrollbar-thumb:hover {
-      background-color: var(--green-neon);
-    }
 
-    .carousel__slider {
-      display: flex;
-      gap: 2rem;
-      animation: marquee linear 77s infinite;
-      min-width: 1500%;
-    }
-
-    .carousel:hover .carousel__slider {
-      animation-play-state: paused;
-    }
 
     .project-card {
       flex: 0 0 300px;
@@ -884,7 +881,7 @@ body.menu-open {
 
   <!-- First Carousel -->
   <section class="carousel" id="carousel">
-    <div class="carousel__slider">
+    <div class="carousel-dots">
 
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
@@ -1249,7 +1246,6 @@ body.menu-open {
   </div>
 
     </div>
-    <div class="carousel-indicators" id="main-carousel-dots"></div>
   </section>
 
       <section>
@@ -1273,6 +1269,46 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     </div>
     <div class="carousel-indicators" id="cert-carousel-dots"></div>
   </section>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const carousel = document.querySelector('.carousel');
+  const items = carousel.children;
+  const dotsContainer = document.querySelector('.carousel-dots');
+
+  // Create dots
+  Array.from(items).forEach((item, index) => {
+    const dot = document.createElement('button');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      items[index].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  // Track active dot
+  carousel.addEventListener('scroll', () => {
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    Array.from(items).forEach((item, index) => {
+      const rect = item.getBoundingClientRect();
+      const distance = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    document.querySelectorAll('.dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === closestIndex);
+    });
+  });
+});
+</script>
+
 
   <style>
     .certifications-carousel {
