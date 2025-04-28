@@ -141,6 +141,25 @@
       scrollbar-width: thin;
     }
 
+    .carousel_slider {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      -webkit-overflow-scrolling: touch;
+      justify-content: center;
+    }
+
+    .carousel_slider::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .carousel_slider::-webkit-scrollbar-thumb {
+      background: var(--green-glow);
+      border-radius: 10px;
+    }
+
     .carousel::-webkit-scrollbar {
       height: 10px;
     }
@@ -160,16 +179,35 @@
       background-color: var(--green-neon);
     }
 
-    .carousel__slider {
+    .carousel_slider {
       display: flex;
       gap: 2rem;
       animation: marquee linear 77s infinite;
       min-width: 1500%;
     }
 
-    .carousel:hover .carousel__slider {
+    .carousel:hover .carousel_slider {
       animation-play-state: paused;
     }
+.maincarousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 8px;
+    }
+
+    .maincarousel-indicators .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #444;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .maincarousel-indicators .dot.active {
+      background-color: var(--green-neon);
+    }
+    
 
     .project-card {
       flex: 0 0 300px;
@@ -823,6 +861,7 @@ body.menu-open {
 
   
 @media (min-width: 768px) {
+  .carousel_slider,
   .certifications__slider {
     justify-content: center;
   }
@@ -882,7 +921,7 @@ body.menu-open {
 
   <!-- First Carousel -->
   <section class="carousel" id="carousel">
-    <div class="carousel__slider">
+    <div class="carousel_slider">
 
     <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
@@ -1247,7 +1286,7 @@ body.menu-open {
   </div>
 
     </div>
-    <div class="carousel-indicators" id="main-carousel-dots"></div>
+    <div class="maincarousel-indicators" id="main-carousel-dots"></div>
   </section>
 
       <section>
@@ -1260,16 +1299,20 @@ click the corresponding image to access it on GitHub or LinkedIn </p>
     <h2 style="text-align:center; color: var(--molten-gold); font-size: 1.8rem; margin-top: 2rem;">Certifications Gallery</h2>
     <div class="certifications__slider">
       <div class="cert-card">
-        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/main/SecurityPlus%20Logo%20Certified%20CE%20see-through.png" alt="Security+ Certified" />
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/SecurityPlus%20Logo.png" alt="Security+ Certified" />
         <p>CompTIA Security+ Certified</p>
       </div>
       <div class="cert-card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Cyber Cert" />
-        <p>Google Cybersecurity Certificate</p>
+        <p>Google Cybersecurity Certified</p>
       </div>
-      <!-- Add more certifications as needed -->
+      <div class="cert-card">
+        <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Cisco.png" alt="Introduction to IoT" />
+        <p>Introduction to IoT Certified</p>
+      </div>
+      
     </div>
-    <div class="carousel-indicators" id="cert-carousel-dots"></div>
+    <div class="carousel-indicators" id="carousel-dots"></div>
   </section>
 
   <style>
@@ -1543,7 +1586,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
         });
       };
 
-      setupDots('.carousel__slider', 'main-carousel-dots');
+      setupDots('.carousel_slider', 'main-carousel-dots');
       setupDots('.certifications__slider', 'cert-carousel-dots');
     });
   </script>
