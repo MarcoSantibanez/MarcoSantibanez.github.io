@@ -300,7 +300,7 @@
   background-color: var(--dark-panel);
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 0 12px var(--border-glow);
+  box-shadow: 0 0 12px var(--green-neon);
   text-align: center;
   max-width: 800px;
   margin: 2rem auto;
@@ -321,7 +321,7 @@
   background: var(--dark-panel);
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  box-shadow: 0 0 12px var(--border-glow);
+  box-shadow: 0 0 12px var(--green-neon);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -338,7 +338,7 @@
   background: var(--dark-panel);
   padding: 0.5rem 1rem;
   border-radius: 30px;
-  box-shadow: 0 0 12px var(--border-glow);
+  box-shadow: 0 0 12px var(--green-neon);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -746,6 +746,24 @@ body.menu-open {
 .alt-effect {
   animation: pulseHighlight 1.5s ease-in-out;
 }
+
+    .carousel__slider {
+    animation: none !important;
+    min-width: auto !important;
+    gap: 1rem;
+  }
+
+  .carousel {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+    .glow-on-show {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+
    @keyframes glow {
   0% {
     box-shadow: 0 0 0px var(--green-glow);
@@ -803,19 +821,7 @@ body.menu-open {
     padding: 1rem;
   }
 
-  .carousel__slider {
-    animation: none !important;
-    min-width: auto !important;
-    gap: 1rem;
-  }
-
-  .carousel {
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
+  
 @media (min-width: 768px) {
   .certifications__slider {
     justify-content: center;
@@ -827,9 +833,6 @@ body.menu-open {
   100% { box-shadow: 0 0 10px var(--border-glow); }
 }
 
-.glow-on-show {
-  animation: glowPulse 2s ease-in-out infinite;
-}
 
   
   </style>
@@ -837,8 +840,9 @@ body.menu-open {
 <body>
   <div id="cookie-consent-banner" style="display: none;">
   <div class="cookie-consent-content">
-    <p>This Portfolio site uses cookies to improve your experience on our website. By browsing this website, you agree to the use of cookies.
-      <a href="#collection-g4">Learn More</a>
+    <p>This portfolio site uses cookies and similar tracking technologies to enhance your browsing experience and analyze traffic. 
+      By clicking "Accept," you consent to the use of these technologies. 
+      <a href="#collection-g4">Learn more</a>.
     </p>
     <button id="accept-cookies">Accept</button>
     <button id="reject-cookies">Reject</button>
@@ -1614,21 +1618,37 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     }
   </style>
 
-  <div id="privacy-policy-text" class="privacy-policy-box">
+ <div id="privacy-policy-text" class="privacy-policy-box">
   <h6>Privacy Policy</h6>
-  <p>This portfolio site uses cookies and similar tracking technologies to improve browsing experience. Specifically, it uses Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
-  <p>By continuing to use this website, you consent to the cookie usage.</p>
+  <p>This portfolio site uses cookies and similar tracking technologies to improve your browsing experience. Specifically, it uses Google Analytics (GA4) to track visits and enhance user experience. You can review <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+  
+  <p>By continuing to use this website, you consent to this tracking. However, you can opt out of Google Analytics data collection at any time by:</p>
+  <ul>
+    <li>Adjusting your ad personalization settings via <a href="https://adssettings.google.com/" target="_blank">Google Ads Settings</a>.</li>
+    <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout/" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</li>
+    <li>Managing ad preferences through the <a href="http://optout.networkadvertising.org/" target="_blank">Network Advertising Initiative's consumer opt-out tool</a>.</li>
+  </ul>
+
   <button id="close-privacy-policy">Close</button>
 </div>
-  
+
 <section class="collection-g4" id="collection-g4">
   <div>
     <h6>Privacy Policy</h6>
-    <p>This portfolio site uses cookies and similar tracking technologies to improve browsing experience. Specifically, it uses Google Analytics (GA4) to track your visits and enhance user experience. <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
-    <p>By continuing to use this website, you consent to the cookie usage.</p>
+    <p>This portfolio site uses cookies and similar tracking technologies to improve your browsing experience. Specifically, it uses Google Analytics (GA4) to track visits and enhance user experience. 
+      You can review <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+    
+    <p>By continuing to use this website, you consent to this tracking. However, you can opt out of Google Analytics data collection at any time by:</p>
+    <ul>
+      <li>Adjusting your ad personalization settings via <a href="https://adssettings.google.com/" target="_blank">Google Ads Settings</a>.</li>
+      <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout/" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</li>
+      <li>Managing ad preferences through the <a href="http://optout.networkadvertising.org/" target="_blank">Network Advertising Initiative's consumer opt-out tool</a>.</li>
+    </ul>
+
     <button id="close-privacy">Close</button> 
   </div>
 </section>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = document.getElementById("close-privacy");
