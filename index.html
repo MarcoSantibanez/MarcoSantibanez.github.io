@@ -128,7 +128,63 @@
   a img:hover {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🔓</text></svg>") 16 16, pointer;
   }
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    .carousel-wrapper {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .project-card {
+        min-width: 100%;
+        flex: 0 0 auto;
+        padding: 10px;
+    }
+    
+    .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .prev {
+        left: 10px;
+    }
+    
+    .next {
+        right: 10px;
+    }
 
+
+
+    
     .carousel {
       mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
       -webkit-mask-image: linear-gradient(to right, transparent 0%, green 20%, green 90%, transparent 100%);
@@ -172,6 +228,19 @@
     .carousel:hover .carousel__slider {
       animation-play-state: paused;
     }
+
+    .carousel-indicators .dot {
+  width: 12px;
+  height: 12px;
+  background-color: #444;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicators .dot.active {
+  background-color: var(--green-neon);
+}
 
     .project-card {
       flex: 0 0 300px;
@@ -882,9 +951,48 @@ body.menu-open {
 
   <!-- First Carousel -->
   <section class="carousel" id="carousel">
-    <div class="carousel__slider">
-
-    <div class="project-card">
+  <!-- Carousel indicators (dots) -->
+  <div class="carousel-indicators" id="main-carousel-dots">
+    <button class="carousel-dot active" data-target="#carousel" data-slide-to="0"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="1"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="2"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="3"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="4"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="5"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="6"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="7"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="8"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="9"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="10"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="11"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="12"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="13"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="14"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="15"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="16"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="17"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="18"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="19"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="20"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="21"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="22"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="23"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="24"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="25"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="26"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="27"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="28"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="29"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="30"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="31"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="32"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="33"></button>
+    <button class="carousel-dot" data-target="#carousel" data-slide-to="34"></button>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel-wrapper">
+ 
+      <div class="project-card">
       <a href="https://github.com/MarcoSantibanez/Botium-Toys#botium-toys" target="_blank">
         <img src="https://user-images.githubusercontent.com/138132151/251837827-02ba1bed-6acf-464d-8a2b-2a23801ad251.png" alt="Botium Toys">
         Botium Toys
@@ -1549,6 +1657,48 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   </script>
 
   <script>
+  const carousel = document.querySelector('.carousel');
+  const slider = document.querySelector('.carousel__slider');
+  const indicatorsContainer = document.querySelector('.carousel-indicators');
+
+  // Function to update active dot
+  function updateActiveDot() {
+    const totalItems = slider.children.length;
+    const scrollPosition = carousel.scrollLeft;
+    const itemWidth = slider.children[0].offsetWidth + 20; // Adjust for spacing
+    const index = Math.floor(scrollPosition / itemWidth);
+
+    // Update the active dot
+    const dots = indicatorsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  // Function to create the dots
+  function createDots() {
+    const totalItems = slider.children.length;
+    
+    // Create and append dots
+    for (let i = 0; i < totalItems; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.addEventListener('click', () => {
+        // Scroll the carousel to the selected dot's corresponding project card
+        carousel.scrollLeft = i * (slider.children[0].offsetWidth + 20); // Adjust for spacing
+      });
+      indicatorsContainer.appendChild(dot);
+    }
+  }
+
+  // Initialize dots and add event listener for scroll
+  createDots();
+  carousel.addEventListener('scroll', updateActiveDot);
+</script>
+</body>
+
+
+  <script>
   window.onload = function() {
     const cookieConsent = localStorage.getItem("cookie-consent");
     if (!cookieConsent) {
@@ -1575,6 +1725,8 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     });
   };
 </script>
+
+  
 
     <section class="contact-section" id="contact-section" >
     <h2>Contact Marco</h2>
