@@ -522,7 +522,6 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  animation: glowPulse 2s infinite;
 }
 
  #sentinel-avatar {
@@ -533,6 +532,7 @@
   border: none;
   padding: 0;
   margin: 0;
+  animation: pulseBotGlow 2s infinite;
   /*object-fit: initial; / ✅ Or remove this line entirely */
 }
 #close-sentinel {
@@ -674,6 +674,14 @@
     bottom: 80px; /* Push up from bottom to avoid overlapping with keyboards */
     font-size: 0.95rem;
   }
+  @keyframes pulseBotGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px var(--green-neon)) drop-shadow(0 0 15px var(--green-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--green-glow)) drop-shadow(0 0 25px var(--green-neon));
+  }
+}
 
   #sentinel-form-popup input,
   #sentinel-form-popup textarea,
@@ -1716,10 +1724,12 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 <script>
   document.getElementById("sentinel-launcher").addEventListener("click", () => {
     document.getElementById("sentinel-panel").style.display = "flex";
+    document.getElementById("sentinel-launcher").style.display = "none";  // ✅ Hide launcher
   });
 
   document.getElementById("close-sentinel").addEventListener("click", () => {
     document.getElementById("sentinel-panel").style.display = "none";
+    document.getElementById("sentinel-launcher").style.display = "flex";  // ✅ Show launcher again
   });
 
   document.getElementById("sentinel-form-popup").addEventListener("submit", async function (e) {
@@ -1762,6 +1772,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     }
   });
 </script>
+
 
 
 
