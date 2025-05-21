@@ -537,13 +537,19 @@
   color: var(--green-neon);
   border: 1px solid var(--green-neon);
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 33px;
+  height: 33px;
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
   box-shadow: 0 0 6px var(--green-glow);
   transition: all 0.3s ease;
+
+  /* Center the "×" fully inside the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* ensure there's no padding offsetting the hitbox */
 }
 
 #close-sentinel:hover {
@@ -1738,8 +1744,17 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
       launcher.style.display = "flex";
     });
 
-    messageField.addEventListener("input", () => {
-      typing.style.display = messageField.value.trim().length > 0 ? "flex" : "none";
+    const inputs = form.querySelectorAll("input, textarea");
+    let typingTimeout;
+
+    inputs.forEach(field => {
+      field.addEventListener("input", () => {
+        clearTimeout(typingTimeout); // prevent multiple timers
+        typingTimeout = setTimeout(() => {
+          const anyFilled = Array.from(inputs).some(input => input.value.trim().length > 0);
+          typing.style.display = anyFilled ? "flex" : "none";
+        }, 150); // small delay to smooth out flicker
+      });
     });
 
     form.addEventListener("submit", async (e) => {
@@ -1765,6 +1780,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
         if (response.ok) {
           responseBox.style.display = "block";
           form.reset();
+          typing.style.display = "none"; // ✅ Reset typing indicator after submit
         } else {
           alert("Oops! Something went wrong.");
         }
