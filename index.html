@@ -174,9 +174,6 @@
       border: 2px solid var(--dark-panel);
       animation: pulse-glow 2s infinite;
     }
-
-
-
     
     .carousel::-webkit-scrollbar-thumb:hover {
       background-color: var(--green-neon);
@@ -437,8 +434,6 @@
   font-weight: bold;
 }
 
-
-
 #reload-button,
 #next-button {
   background: var(--green-neon);
@@ -533,15 +528,17 @@
   padding: 0;
   margin: 0;
   /*object-fit: initial; / ✅ Or remove this line entirely */
-}
+ }
 #close-sentinel {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
   background: var(--dark-bg);
   color: var(--green-neon);
   border: 1px solid var(--green-neon);
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  text-align: center;
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
@@ -554,7 +551,6 @@
   box-shadow: 0 0 10px var(--molten-gold);
   border-color: var(--molten-gold);
 }
-
 
 .chat-bubble {
   background: var(--green-neon);
@@ -591,6 +587,7 @@
 }
 
 .sentinel-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1696,12 +1693,14 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   <div class="chat-bubble">Need help? 👋</div>
 </div>
 
-<div id="sentinel-panel">
-  <div class="sentinel-header">
-    <strong>Greetings, I'm Sentinel, your digital security assistant. </strong>
+<div class="sentinel-header">
+  <button id="close-sentinel">×</button>
+  <div class="sentinel-greeting">
+    <strong>Greetings, I'm Sentinel, your digital security assistant.</strong>
     <p>How may I assist you today?</p>
-    <button id="close-sentinel">&times;</button>
   </div>
+</div>
+
   <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
     <input type="text" name="name" placeholder="Your name" required />
     <input type="email" name="email" placeholder="Your email" required />
