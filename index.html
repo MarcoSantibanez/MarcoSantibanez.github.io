@@ -525,11 +525,13 @@
   animation: glowPulse 2s infinite;
 }
 
-#sentinel-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--green-neon);
+  #sentinel-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 0;
+  object-fit: contain;
+  box-shadow: 0 0 12px var(--green-neon);
+}
 }
 
 .chat-bubble {
@@ -603,6 +605,9 @@
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
+}
+    #sentinel-launcher {
+  gap: 14px; /* Slightly more space between bot and bubble */
 }
 
 #form-response-popup {
@@ -1656,7 +1661,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   
 <!-- 🟢 Floating Sentinel Avatar Launcher (ONE instance only) -->
 <div id="sentinel-launcher">
-  <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Sentinel-Mascot.png" alt="Sentinel Mascot" id="sentinel-avatar">
+  <img src="https://raw.githubusercontent.com/MarcoSantibanez/MarcoSantibanez.github.io/refs/heads/main/Sentinel_Final_FBG_vivid.png" alt="Sentinel Mascot" id="sentinel-avatar">
   <div class="chat-bubble">Need help? 👋</div>
 </div>
 
