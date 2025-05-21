@@ -525,7 +525,7 @@
 }
 
  #sentinel-avatar {
-  height: 90px;
+  height: 130px;
   width: auto;
   filter: drop-shadow(0 0 10px var(--green-neon)) drop-shadow(0 0 15px var(--green-glow));
   background: transparent;
@@ -1703,9 +1703,9 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     <input type="email" name="email" placeholder="Your email" required />
     <textarea name="message" rows="4" placeholder="Type your message..." required></textarea>
     <button type="submit">Send</button>
-    <div id="typing-indicator-popup">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span> Sentinel is typing...
-    </div>
+    <div id="typing-indicator-popup" style="display:none; color: var(--green-neon); font-size: 0.85rem; margin-top: 0.5rem;">
+  <span class="dot"></span><span class="dot"></span><span class="dot"></span> Encrypting and forwarding to Marco...
+</div>
     <div id="form-response-popup">✅ Message received.</div>
   </form>
 </div>
@@ -1713,57 +1713,65 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 
 
 <script>
-  document.getElementById("sentinel-launcher").addEventListener("click", () => {
-    document.getElementById("sentinel-panel").style.display = "flex";
-    document.getElementById("sentinel-launcher").style.display = "none";  // ✅ Hide launcher
-  });
-
-  document.getElementById("close-sentinel").addEventListener("click", () => {
-    document.getElementById("sentinel-panel").style.display = "none";
-    document.getElementById("sentinel-launcher").style.display = "flex";  // ✅ Show launcher again
-  });
-
-  document.getElementById("sentinel-form-popup").addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const form = e.target;
+  window.addEventListener("DOMContentLoaded", () => {
+    const launcher = document.getElementById("sentinel-launcher");
+    const panel = document.getElementById("sentinel-panel");
+    const closeBtn = document.getElementById("close-sentinel");
+    const form = document.getElementById("sentinel-form-popup");
+    const messageField = form.querySelector("textarea");
     const button = form.querySelector("button");
     const typing = document.getElementById("typing-indicator-popup");
     const responseBox = document.getElementById("form-response-popup");
 
-    responseBox.style.display = "none";
-    button.disabled = true;
-    button.textContent = "Sentinel is sending your message securely!";
-    typing.style.display = "flex";
+    launcher.addEventListener("click", () => {
+      panel.style.display = "flex";
+      launcher.style.display = "none";
+    });
 
-    const data = new FormData(form);
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
+    closeBtn.addEventListener("click", () => {
+      panel.style.display = "none";
+      launcher.style.display = "flex";
+    });
 
-      await new Promise(resolve => setTimeout(resolve, 1200));
+    messageField.addEventListener("input", () => {
+      typing.style.display = messageField.value.trim().length > 0 ? "flex" : "none";
+    });
 
-      typing.style.display = "none";
-      button.disabled = false;
-      button.textContent = "Send";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      responseBox.style.display = "none";
+      button.disabled = true;
+      button.textContent = "Sentinel is sending your message securely!";
+      typing.style.display = "flex";
 
-      if (response.ok) {
-        responseBox.style.display = "block";
-        form.reset();
-      } else {
-        alert("Oops! Something went wrong.");
+      const data = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        await new Promise(resolve => setTimeout(resolve, 1200));
+        typing.style.display = "none";
+        button.disabled = false;
+        button.textContent = "Send";
+
+        if (response.ok) {
+          responseBox.style.display = "block";
+          form.reset();
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      } catch (err) {
+        typing.style.display = "none";
+        button.disabled = false;
+        button.textContent = "Send";
+        alert("An error occurred. Please try again later.");
       }
-    } catch (err) {
-      typing.style.display = "none";
-      button.disabled = false;
-      button.textContent = "Send";
-      alert("An error occurred. Please try again later.");
-    }
+    });
   });
 </script>
-
 
 
 
