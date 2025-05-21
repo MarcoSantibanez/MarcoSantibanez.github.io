@@ -1691,6 +1691,16 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     });
   };
 </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".certifications__slider");
+
+  // Only show horizontal scroll if content overflows
+  if (slider.scrollWidth <= slider.clientWidth) {
+    slider.style.overflowX = "hidden";
+  }
+});
+</script>
 
   
 <!-- 🟢 Floating Sentinel Avatar Launcher (ONE instance only) -->
@@ -1700,7 +1710,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 </div>
 
 <div id="sentinel-panel">
-   <button id="close-sentinel">×</button>
+   <button id="close-sentinel"><i class="fa-solid fa-circle-xmark"></i></button>
   <div class="sentinel-header">
     <div class="sentinel-greeting">
       <strong>Greetings, I'm Sentinel, your digital security assistant.</strong>
