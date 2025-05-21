@@ -525,13 +525,35 @@
   animation: glowPulse 2s infinite;
 }
 
-  #sentinel-avatar {
-  width: 90px;
+ #sentinel-avatar {
   height: 90px;
-  border-radius: 0;
-  object-fit: contain;
-  box-shadow: 0 0 12px var(--green-neon);
-  background-color: transparent;
+  width: auto;
+  filter: drop-shadow(0 0 10px var(--green-neon)) drop-shadow(0 0 15px var(--green-glow));
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  /*object-fit: initial; / ✅ Or remove this line entirely */
+}
+#close-sentinel {
+  background: var(--dark-bg);
+  color: var(--green-neon);
+  border: 1px solid var(--green-neon);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--green-glow);
+  transition: all 0.3s ease;
+}
+
+#close-sentinel:hover {
+  color: var(--molten-gold);
+  box-shadow: 0 0 10px var(--molten-gold);
+  border-color: var(--molten-gold);
 }
 
 
