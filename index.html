@@ -1693,25 +1693,27 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   <div class="chat-bubble">Need help? 👋</div>
 </div>
 
-<div class="sentinel-header">
-  <button id="close-sentinel">×</button>
-  <div class="sentinel-greeting">
-    <strong>Greetings, I'm Sentinel, your digital security assistant.</strong>
-    <p>How may I assist you today?</p>
+<div id="sentinel-panel">
+  <div class="sentinel-header">
+    <button id="close-sentinel">×</button>
+    <div class="sentinel-greeting">
+      <strong>Greetings, I'm Sentinel, your digital security assistant.</strong>
+      <p>How may I assist you today?</p>
+    </div>
   </div>
-</div>
 
   <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
     <input type="text" name="name" placeholder="Your name" required />
     <input type="email" name="email" placeholder="Your email" required />
     <textarea name="message" rows="4" placeholder="Type your message..." required></textarea>
     <button type="submit">Send</button>
-    <div id="typing-indicator-popup" style="display:none; color: var(--green-neon); font-size: 0.85rem; margin-top: 0.5rem;">
-  <span class="dot"></span><span class="dot"></span><span class="dot"></span> Encrypting and forwarding to Marco...
-</div>
+    <div id="typing-indicator-popup">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span> Encrypting and forwarding to Marco...
+    </div>
     <div id="form-response-popup">✅ Message received.</div>
   </form>
 </div>
+
 
 
 
