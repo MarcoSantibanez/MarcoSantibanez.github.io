@@ -577,12 +577,13 @@
   position: fixed;
   bottom: 100px;
   right: 25px;
-  width: 320px;
+  width: 340px; /* slightly wider */
+  max-width: 95vw; /* mobile-friendly */
   background: var(--dark-panel);
   border: 2px solid var(--green-neon);
   border-radius: 12px;
   box-shadow: 0 0 20px var(--green-glow);
-  padding: 1rem;
+  padding: 1.2rem;
   z-index: 9999;
   display: none;
   flex-direction: column;
@@ -591,9 +592,15 @@
 
 .sentinel-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--green-neon);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  gap: 0.5rem; /* spacing between greeting and question */
+  padding: 0.5rem; /* optional: adds breathing room around the text */
+  line-height: 1.5; /* improves readability */
 }
 
 #sentinel-form-popup input,
@@ -667,16 +674,21 @@
   #sentinel-panel {
     width: 90vw;
     right: 5vw;
-    bottom: 80px; /* Push up from bottom to avoid overlapping with keyboards */
+    bottom: 80px;
     font-size: 0.95rem;
   }
- 
+
+  .sentinel-header {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
   #sentinel-form-popup input,
   #sentinel-form-popup textarea,
   #sentinel-form-popup button {
-  padding: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.4;
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
   .chat-bubble {
@@ -687,15 +699,10 @@
   #sentinel-avatar {
     height: 90px; 
     width: auto;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
   }
-#sentinel-avatar {
-  padding: 0;
-  margin: 0;
-  vertical-align: middle;
-}
-    
-}
-
 
 @media (max-height: 400px) {
   .chat-bubble {
@@ -1689,10 +1696,10 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
   <div class="chat-bubble">Need help? 👋</div>
 </div>
 
-<!-- 🔵 Hidden Floating Panel -->
 <div id="sentinel-panel">
   <div class="sentinel-header">
-    <strong>Greetings, I'm Sentinel, your digital security assistant. How may I assist you today?</strong>
+    <strong>Greetings, I'm Sentinel, your digital security assistant. </strong>
+    <p>How may I assist you today?</p>
     <button id="close-sentinel">&times;</button>
   </div>
   <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
