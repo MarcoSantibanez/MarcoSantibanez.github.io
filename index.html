@@ -532,7 +532,7 @@
   border: none;
   padding: 0;
   margin: 0;
-  animation: pulseBotGlow 2s infinite;
+  animation: pulseHighlight 3s ease-in-out infinite, glowPulse 1.5s ease-in-out infinite;
   /*object-fit: initial; / ✅ Or remove this line entirely */
 }
 #close-sentinel {
@@ -674,15 +674,7 @@
     bottom: 80px; /* Push up from bottom to avoid overlapping with keyboards */
     font-size: 0.95rem;
   }
-  @keyframes pulseBotGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 10px var(--green-neon)) drop-shadow(0 0 15px var(--green-glow));
-  }
-  50% {
-    filter: drop-shadow(0 0 20px var(--green-glow)) drop-shadow(0 0 25px var(--green-neon));
-  }
-}
-
+ 
   #sentinel-form-popup input,
   #sentinel-form-popup textarea,
   #sentinel-form-popup button {
@@ -1704,7 +1696,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 <!-- 🔵 Hidden Floating Panel -->
 <div id="sentinel-panel">
   <div class="sentinel-header">
-    <strong>Sentinel</strong> – Contact Assistant
+    <strong>Sentinel</strong> Greetings, I'm Sentinel, your digital security assistant. How may I assist you today?
     <button id="close-sentinel">&times;</button>
   </div>
   <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
@@ -1741,7 +1733,7 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
 
     responseBox.style.display = "none";
     button.disabled = true;
-    button.textContent = "Sending...";
+    button.textContent = "Sentinel is sending your message securely!";
     typing.style.display = "flex";
 
     const data = new FormData(form);
