@@ -21,7 +21,68 @@
     "https://marcosantibanez.github.io"
   ]
 }
+
+    {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Marco Santibanez Cybersecurity Portfolio",
+  "url": "https://marcosantibanez.github.io",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://marcosantibanez.github.io/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "PhishingQuiz",
+  "name": "Phishing Awareness Quiz",
+  "author": {
+    "@type": "Person",
+    "name": "Marco Santibanez"
+  },
+  "url": "https://marcosantibanez.github.io/phishing-quiz",
+  "description": "An interactive phishing awareness quiz to test end-user security knowledge.",
+  "inLanguage": "en"
+}
+
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://marcosantibanez.github.io"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": "https://marcosantibanez.github.io/#projects"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Phishing Quiz",
+      "item": "https://marcosantibanez.github.io/phishing-quiz"
+    }
+  ]
+}
+
+
+
+    
 </script>
+
+
+
+
+
+
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cybersecurity Portfolio by Marco Santibanez – showcasing phishing awareness, incident response, and security projects.">
@@ -1718,6 +1779,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
     <input type="text" name="name" placeholder="Your name" required />
     <input type="email" name="email" placeholder="Your email" required />
+    <input type="text" name="Comment3" style="display:none">
     <textarea name="message" rows="4" placeholder="Type your message..." required></textarea>
     <button type="submit">Send</button>
     <div id="typing-indicator-popup" style="display: none;>
