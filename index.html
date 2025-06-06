@@ -1782,20 +1782,58 @@ document.addEventListener("DOMContentLoaded", () => {
       <p>How may I assist you today?</p>
     </div>
   </div>
-
-  <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST">
-    <input type="text" name="name" placeholder="Your name" required />
-    <input type="email" name="email" placeholder="Your email" required />
-    <input type="text" name="Comment3" style="display:none">
-    <textarea name="message" rows="4" placeholder="Type your message..." required></textarea>
-    <button type="submit">Send</button>
-    <div id="typing-indicator-popup" style="display: none;>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span> Encrypting and forwarding to Marco...
-    </div>
-    <div id="form-response-popup">✅ Message received.</div>
-  </form>
+  <form id="sentinel-form-popup" action="https://formspree.io/f/mjkyzpzl" method="POST" onsubmit="return validateSentinelForm(event)">
+  <input type="text" name="name" placeholder="Your name" required />
+  <input type="email" name="email" placeholder="Your email" required />
+  <input type="text" name="Comment3" style="display:none">
+  <textarea name="message" rows="4" placeholder="Type your message..." required minlength="10" maxlength="300"></textarea>
+  <button type="submit">Send</button>
+  <!-- Typing indicator (fix: closing quote in style attr) -->
+  <div id="typing-indicator-popup" style="display: none;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span> Encrypting and forwarding to Marco...
+  </div>
+  <div id="form-response-popup" style="display: none;">✅ Message received.</div>
+</form>
 </div>
 
+<script>
+function validateSentinelForm(e) {
+  const form = document.getElementById("sentinel-form-popup");
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
+  const hp = form.Comment3.value;
+
+  if (hp) {
+    // Spam detected
+    e.preventDefault();
+    return false;
+  }
+
+  if (!name || !email || !message) {
+    alert("All fields are required.");
+    e.preventDefault();
+    return false;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    e.preventDefault();
+    return false;
+  }
+
+  if (message.length < 10) {
+    alert("Your message is too short.");
+    e.preventDefault();
+    return false;
+  }
+
+  // Optional: show loading animation
+  document.getElementById("typing-indicator-popup").style.display = "block";
+  return true;
+}
+</script>
 
 
 
